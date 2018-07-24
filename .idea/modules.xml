@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Supremo.iml" filepath="$PROJECT_DIR$/Supremo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supremo/supremo.iml" filepath="$PROJECT_DIR$/supremo/supremo.iml" />
+    </modules>
+  </component>
+</project>
