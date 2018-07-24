@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Supremo.iml" filepath="$PROJECT_DIR$/Supremo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/supremo/supremo.iml" filepath="$PROJECT_DIR$/supremo/supremo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supremo.iml" filepath="$PROJECT_DIR$/supremo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/supremo/supremo-supremo.iml" filepath="$PROJECT_DIR$/supremo/supremo-supremo.iml" />
     </modules>
   </component>
 </project>
