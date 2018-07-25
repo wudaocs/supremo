@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" />
       <module fileurl="file://$PROJECT_DIR$/supremo.iml" filepath="$PROJECT_DIR$/supremo.iml" />
       <module fileurl="file://$PROJECT_DIR$/supremo/supremo-supremo.iml" filepath="$PROJECT_DIR$/supremo/supremo-supremo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/views/views.iml" filepath="$PROJECT_DIR$/views/views.iml" />
     </modules>
   </component>
 </project>

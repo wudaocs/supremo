@@ -1,1 +1,1 @@
-include ':supremo', ':base', ':network'
+include ':supremo', ':base', ':network', ':views'
