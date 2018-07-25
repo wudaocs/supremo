@@ -1,5 +1,7 @@
 package com.td.network;
 
+import com.td.network.entity.RequestEntity;
+
 /**
  * Description : 网络回调接口
  * Created by Mc on 2018/7/24.
@@ -9,9 +11,9 @@ package com.td.network;
  * Person in charge : Mc
  * Leader：Mc
  */
-public interface IRequestCallback {
+public interface IRequestCallback<T> {
 
-    void onSuccess(String response);
+    void onSuccess(T data);
 
-    void onFail(Throwable throwable);
+    void onFail(RequestEntity requestEntity);
 }

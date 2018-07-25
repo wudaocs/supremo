@@ -1,5 +1,8 @@
 package com.td.network;
 
+import com.td.network.entity.GetEntity;
+import com.td.network.entity.PostEntity;
+
 /**
  * Description : 网络管理接口
  * Created by Mc on 2018/7/24.
@@ -9,10 +12,9 @@ package com.td.network;
  * Person in charge : Mc
  * Leader：Mc
  */
-public interface ISRequestManager {
+public interface ISRequestManager<T> {
 
-    void get(String url, IRequestCallback requestCallback);
+    void post(PostEntity<T> postEntity);
 
-    void post(String url, String requestBodyJson, IRequestCallback requestCallback);
-
+    void get(GetEntity<T> getEntity);
 }
