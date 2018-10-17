@@ -27,11 +27,19 @@ public abstract class RootActivity extends AppCompatActivity implements RootCont
         } else if (getContentView() != null) {
             setContentView(getContentView());
         }
+        start();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        refresh();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        close();
     }
 
     protected int getContentViewLayoutID() {
@@ -42,7 +50,15 @@ public abstract class RootActivity extends AppCompatActivity implements RootCont
         return null;
     }
 
+    /** 传递数据初始化 */
     protected void initIntent() {}
 
+    /** 开始执行 */
+    protected void start() {}
 
+    /** 刷新页面 */
+    protected void refresh(){}
+
+    /** 关闭页面 */
+    protected void close(){}
 }
