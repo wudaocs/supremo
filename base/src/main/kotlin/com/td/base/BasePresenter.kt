@@ -7,7 +7,7 @@ import kotlinx.coroutines.*
  * Created by Wang Yue on 2019-12-26.
  * Phone ：18610413765
  */
-abstract class BasePresenter : CoroutineScope by CoroutineScope(SupervisorJob() + Dispatchers.Main){
+abstract class BasePresenter<V> : CoroutineScope by CoroutineScope(SupervisorJob() + Dispatchers.Main){
 
     var mView: BaseView? = null
 
@@ -20,6 +20,9 @@ abstract class BasePresenter : CoroutineScope by CoroutineScope(SupervisorJob() 
     fun onAttachModel(model: BaseModel) {
         mModel = model
     }
+
+    @Suppress("UNCHECKED_CAST")
+    fun getView(): V? = mView as V
 
     /**
      * 页面销毁时默认调用

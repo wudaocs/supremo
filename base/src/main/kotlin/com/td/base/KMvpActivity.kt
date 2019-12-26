@@ -31,7 +31,7 @@ open class KMvpActivity<P> : KBaseActivity() {
                 }
                 val view = this
                 mPresenter?.run {
-                    if (this is BasePresenter) {
+                    if (this is BasePresenter<*>) {
                         if (view is BaseView) {
                             this.onAttachView(view)
                         } else {
@@ -50,7 +50,7 @@ open class KMvpActivity<P> : KBaseActivity() {
     override fun close() {
         super.close()
         mPresenter?.run {
-            if (this is BasePresenter) {
+            if (this is BasePresenter<*>) {
                 this.onDetached()
             }
         }
