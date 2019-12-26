@@ -1,6 +1,7 @@
 package com.td.network;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.td.network.entity.GetEntity;
 import com.td.network.entity.PostEntity;
@@ -69,7 +70,8 @@ public class OkHttpRequestManager implements ISRequestManager {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
                 String data = "server not return message !";
-                if (call.request() != null && call.request().body() != null) {
+                call.request();
+                if (call.request().body() != null) {
                     data = e.getMessage();
                 }
                 if (requestCallback != null) {

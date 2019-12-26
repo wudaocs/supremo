@@ -21,20 +21,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation depends.kotlin
-    implementation depends.appcompat_v7
+    implementation depends.appcompat
     testImplementation depends.junit
     androidTestImplementation depends.runner
     androidTestImplementation depends.espresso_core
 
     api depends.okhttp
     api depends.okio
+    api depends.retrofit
+    api depends.retrofit_gson
+    api depends.okhttp_Log
 
     implementation depends.kotlinx_coroutines
     implementation depends.gson
+
+    implementation project(':base')
 
 }

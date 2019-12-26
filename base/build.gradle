@@ -22,14 +22,21 @@ android {
         }
     }
 
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation depends.kotlin
-    implementation depends.appcompat_v7
+    implementation depends.kotlinx_coroutines
+    implementation depends.appcompat
     testImplementation depends.junit
     androidTestImplementation depends.runner
     androidTestImplementation depends.espresso_core
+
+    implementation depends.gson
 }

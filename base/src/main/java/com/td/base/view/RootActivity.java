@@ -1,9 +1,10 @@
 package com.td.base.view;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.td.base.contract.RootContract;
 
@@ -27,7 +28,7 @@ public abstract class RootActivity extends AppCompatActivity implements RootCont
         } else if (getContentView() != null) {
             setContentView(getContentView());
         }
-        start();
+        creating();
     }
 
     @Override
@@ -53,8 +54,8 @@ public abstract class RootActivity extends AppCompatActivity implements RootCont
     /** 传递数据初始化 */
     protected void initIntent() {}
 
-    /** 开始执行 */
-    protected void start() {}
+    /** 创建页面中 */
+    protected void creating() {}
 
     /** 刷新页面 */
     protected void refresh(){}

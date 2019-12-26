@@ -20,12 +20,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        main.res.srcDirs = ['src/main/res/general','src/main/res/mvp']
+    }
+
+    packagingOptions {
+        // 解决so文件重复冲突问题
+        // pickFirst 'lib/xxx.so'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation depends.kotlin
-    implementation depends.appcompat_v7
+    implementation depends.kotlinx_coroutines
+    implementation depends.appcompat
     implementation depends.constraint_layout
     testImplementation depends.junit
     androidTestImplementation depends.runner

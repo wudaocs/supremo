@@ -1,7 +1,5 @@
 package com.td.base.contract;
 
-import android.view.View;
-
 import com.td.base.interfaces.IBaseView;
 import com.td.base.interfaces.IPresenter;
 

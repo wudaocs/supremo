@@ -1,4 +1,4 @@
-package com.td.base.utils.edittext;
+package com.td.utils.edittext;
 
 import android.text.TextUtils;
 
@@ -62,6 +62,11 @@ public class InputTextBuilder {
     }
 
     public InputTextBuilder setInputTextListener(InputTextListener inputTextListener) {
+        this.inputTextListener = inputTextListener;
+        return this;
+    }
+
+    public InputTextBuilder setInputTextListener(InputTextErrorListener inputTextListener) {
         this.inputTextListener = inputTextListener;
         return this;
     }

@@ -1,4 +1,4 @@
-package com.td.base.utils.edittext;
+package com.td.utils.edittext;
 
 /**
  * Description :

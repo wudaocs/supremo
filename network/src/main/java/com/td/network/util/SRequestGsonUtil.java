@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import java.io.StringReader;
 import java.lang.reflect.Type;
 
 /**

@@ -4,10 +4,11 @@ import android.content.Intent
 import android.text.InputFilter
 import android.widget.EditText
 import android.widget.TextView
-import com.td.base.utils.edittext.InputTextBuilder
-import com.td.base.utils.edittext.InputTextErrorListener
-import com.td.base.utils.edittext.InputTextFilter
+import com.td.utils.edittext.InputTextBuilder
+import com.td.utils.edittext.InputTextErrorListener
+import com.td.utils.edittext.InputTextFilter
 import com.td.base.view.BaseActivity
+import com.td.supremo.mvp.TestMvpActivity
 
 /**
  * Description : 应用启动类
@@ -46,8 +47,8 @@ class StartActivity : BaseActivity() {
                 }).build()))
     }
 
-    override fun start() {
-        super.start()
-        mTextView!!.postDelayed({ startActivity(Intent(this@StartActivity, TestActivity::class.java)) }, 100)
+    override fun creating() {
+        super.creating()
+        mTextView!!.postDelayed({ startActivity(Intent(this@StartActivity, TestMvpActivity::class.java)) }, 100)
     }
 }

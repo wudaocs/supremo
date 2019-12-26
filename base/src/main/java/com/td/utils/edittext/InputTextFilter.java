@@ -1,9 +1,10 @@
-package com.td.base.utils.edittext;
+package com.td.utils.edittext;
 
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextUtils;
-import android.util.Log;
+
+import com.td.log.L;
 
 /**
  * Description : 通用设置固定字符格式适配器
@@ -51,7 +52,7 @@ public class InputTextFilter implements InputFilter {
     @Override
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
 
-        Log.v("InputTextFilter", "输入的文字source= " + source + "  开始位置start= " + start
+        L.v("InputTextFilter", "输入的文字source= " + source + "  开始位置start= " + start
                 + "  结束位置end= " + end + "  当前显示的内容dest= " + dest + "  当前开始位置dstart= " + dstart + "  当前结束位置dend= " + dend);
         boolean f = !TextUtils.isEmpty(FORMAT);
         boolean l = LENGTH != 0;
@@ -81,7 +82,7 @@ public class InputTextFilter implements InputFilter {
                 }
             } else {
                 // 无长度限制则直接添加，添加之后的字符
-                Log.v("InputTextFilter", "真正输入的内容= " + getRealWords(source, end, dstart, dend));
+                L.v("InputTextFilter", "真正输入的内容= " + getRealWords(source, end, dstart, dend));
                 showWords.append(dest).insert(dend, getRealWords(source, end, dstart, dend));
             }
         } else {// 删除操作
@@ -101,12 +102,12 @@ public class InputTextFilter implements InputFilter {
      * @return 是否符合格式
      */
     private boolean isBreak(CharSequence source) {
-        boolean isBreak = true;
+        boolean isBreak = false;
         if (!TextUtils.isEmpty(FORMAT)) {
             for (int i = 0, fl = FORMAT.length() - 1; i < fl; i++) {
                 if (TextUtils.equals(String.valueOf(FORMAT.charAt(i)), source) || FORMAT.contains(source)) {
-                    Log.v("InputTextFilter", "输入内容不包含无效字符");
-                    isBreak = false;
+                    L.v("InputTextFilter", "输入内容不包含无效字符");
+                    isBreak = true;
                 }
             }
         }
@@ -114,9 +115,9 @@ public class InputTextFilter implements InputFilter {
             if (mInputTextListener != null && mInputTextListener instanceof InputTextErrorListener) {
                 ((InputTextErrorListener) mInputTextListener).inputError();
             }
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     /**
@@ -127,7 +128,7 @@ public class InputTextFilter implements InputFilter {
      */
     private void callback(CharSequence content, StringBuilder showWords) {
         int size = isZhNumber ? getWordCount(showWords.toString()) : showWords.length();
-        Log.v("InputTextFilter", "content= " + content + "  size=" + size + " showWords= " + showWords + "|");
+        L.v("InputTextFilter", "content= " + content + "  size=" + size + " showWords= " + showWords + "|");
         String data = TextUtils.isEmpty(content) ? "" : content.toString();
         if (mInputTextListener != null) {
             if (mInputTextListener instanceof InputTextErrorListener) {

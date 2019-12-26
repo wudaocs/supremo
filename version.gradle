@@ -1,9 +1,10 @@
 ext {
     depends = [
             // system
-            appcompat_v7      : "com.android.support:appcompat-v7:27.1.1",
-
+            appcompat      : "androidx.appcompat:appcompat:1.1.0",
+            core_ktx      : "androidx.core:core-ktx:1.1.0",
             kotlin            : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
+            kotlinx_coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2",
 
             // test
             junit             : "junit:junit:4.12",
@@ -16,18 +17,22 @@ ext {
             gson              : "com.google.code.gson:gson:2.8.5",
             // http
             okhttp            : "com.squareup.okhttp3:okhttp:4.2.2",
+            okhttp_Log        : "com.squareup.okhttp3:logging-interceptor:4.2.2",
             okio              : "com.squareup.okio:okio:2.2.2",
-            kotlinx_coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
+            retrofit          : "com.squareup.retrofit2:retrofit:2.6.2",
+            retrofit_gson     : "com.squareup.retrofit2:converter-gson:2.6.2",
+
+
     ]
 
     vers = [
-            compileSdkVersion : 29,
-            applicationId   : "com.td.supremo",
-            minSdkVersion   : 16,
-            targetSdkVersion: 29,
+            compileSdkVersion: 29,
+            applicationId    : "com.td.supremo",
+            minSdkVersion    : 16,
+            targetSdkVersion : 29,
             // 应用版本号
-            versionCode     : 1,
-            versionName     : "1.0"
+            versionCode      : 1,
+            versionName      : "1.0"
     ]
 }
 

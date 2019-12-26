@@ -2,9 +2,8 @@ package com.td.supremo
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
-import com.td.supremo.TUtils.Companion.teststatic
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_start.*
 
 /**
@@ -23,11 +22,11 @@ class TestKotlinActivity : AppCompatActivity() {
         setContentView(R.layout.activity_start)
         var test = findViewById<TextView>(R.id.tv_activity_start_prompt)
 
-        val toolbar = findViewById(R.id.tv_activity_start_prompt) as TextView
+        val toolbar = findViewById<TextView>(R.id.tv_activity_start_prompt)
 
         val bundle = this.intent.extras
-        bundle.get("key").toString()
-        bundle.get("name").toString()
+        bundle?.get("key").toString()
+        bundle?.get("name").toString()
     }
 
     override fun onStart() {
@@ -35,12 +34,12 @@ class TestKotlinActivity : AppCompatActivity() {
         start()
     }
 
-    fun start() {
+    private fun start() {
         tv_activity_start_prompt.text = ""
     }
 
     fun openActivty() {
-        val intent = Intent(TestKotlinActivity@ this, StartActivity::class.java)
+        val intent = Intent(this, StartActivity::class.java)
         val bundle = Bundle()
         bundle.putString("name", "kotlin")
         bundle.putInt("sex", 1)

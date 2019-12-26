@@ -1,8 +1,9 @@
 package com.td.base.view;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 /**
  * Description :
@@ -13,7 +14,7 @@ import android.support.v4.app.FragmentActivity;
  * Person in charge :Wang Yue
  * Leader：Ding Lei
  */
-public class BaseFragmentActivity extends FragmentActivity{
+public class BaseFragmentActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

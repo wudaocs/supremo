@@ -14,8 +14,8 @@ public class BaseActivity extends RootActivity {
     protected void findView(){ }
 
     @Override
-    protected void start() {
-        super.start();
+    protected void creating() {
+        super.creating();
         findView();
     }
 }
