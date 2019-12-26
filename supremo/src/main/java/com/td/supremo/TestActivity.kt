@@ -31,7 +31,7 @@ class TestActivity : BaseActivity() {
         mTextView = findViewById(R.id.tv_activity_start_prompt)
         mEditText = findViewById(R.id.et_activity_start_prompt)
         mEditText!!.filters = arrayOf<InputFilter>(InputTextFilter(InputTextBuilder()
-                .setLength(10)
+                .setLength(5)
 //                .setFormat("abc")
                 .setInputTextListener(object : InputTextErrorListener {
                     override fun inputText(size: Int) {
@@ -53,5 +53,22 @@ class TestActivity : BaseActivity() {
         //                startActivity(new Intent(TestActivity.this, TestActivity.class));
         //            }
         //        },100);
+        var testEntity : TestEntity = TestEntity("Kotlin",0)
+        var java = testEntity.copy(name = "Java")
+    }
+
+    fun test(obj: Any):Int?{
+        when("x"){
+            "y" -> print("x==1")
+        }
+
+        var test = 1 until 6
+        var test2 = test.reversed()
+
+        for(i in 1 downTo  10){
+
+        }
+
+        return null
     }
 }

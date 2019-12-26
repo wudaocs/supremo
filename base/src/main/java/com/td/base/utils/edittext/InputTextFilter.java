@@ -39,6 +39,15 @@ public class InputTextFilter implements InputFilter {
         }
     }
 
+    /**
+     * @param source 为即将输入的字符串
+     * @param start  source的start
+     * @param end    source的end start为0，end也可理解为source长度
+     * @param dest   输入框中原来的内容
+     * @param dstart 要替换或者添加的起始位置，即光标所在的位
+     * @param dend   要替换或者添加的终止始位置，若为选择一串字符串进行更改，则为选中字符串 最后一个字符在dest中的位置
+     * @return CharSequence
+     */
     @Override
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
 
@@ -48,18 +57,15 @@ public class InputTextFilter implements InputFilter {
         boolean l = LENGTH != 0;
         // 显示的字符
         StringBuilder showWords = new StringBuilder();
+        CharSequence word = source;
         // 添加操作
-        if (source.length() >= 0) {
-            if (!TextUtils.isEmpty(source) && (f || l)) {// 两个条件任意符合则拦截
-                if (f) { // 字符限制,包含无效字符则直接返回
-                    if (isBreak(source)) return dest;
-                }
-                if (l) {// 长度限制
-                    source = splitContent(source, end, dest, dstart, dend);
-                }
+        if (!TextUtils.isEmpty(source) && source.length() >= 0) {
+            // 两个条件任意符合则拦截
+            if (f) { // 字符限制,包含无效字符则直接返回
+                if (isBreak(source)) return null;
             }
-            // 添加之后的字符
-            if (l) {
+            if (l) {// 长度限制,如果长度超过则截取
+                word = splitContent(source, start, end, dest, dstart, dend);
                 // 三种替换方式 1. 从头部替换 2. 从尾部替换 3. 中间替换
                 if (dstart == 0) {
                     // 第一种
@@ -74,6 +80,7 @@ public class InputTextFilter implements InputFilter {
                     showWords.append(dest).insert(dstart, source);
                 }
             } else {
+                // 无长度限制则直接添加，添加之后的字符
                 Log.v("InputTextFilter", "真正输入的内容= " + getRealWords(source, end, dstart, dend));
                 showWords.append(dest).insert(dend, getRealWords(source, end, dstart, dend));
             }
@@ -83,8 +90,8 @@ public class InputTextFilter implements InputFilter {
                 showWords.append(dest.toString().substring(dend, dest.length()));
             }
         }
-        callback(source, showWords);
-        return TextUtils.isEmpty(source) ? null : source;
+        callback(word, showWords);
+        return TextUtils.isEmpty(word) ? null : word;
     }
 
     /**
@@ -121,14 +128,13 @@ public class InputTextFilter implements InputFilter {
     private void callback(CharSequence content, StringBuilder showWords) {
         int size = isZhNumber ? getWordCount(showWords.toString()) : showWords.length();
         Log.v("InputTextFilter", "content= " + content + "  size=" + size + " showWords= " + showWords + "|");
+        String data = TextUtils.isEmpty(content) ? "" : content.toString();
         if (mInputTextListener != null) {
             if (mInputTextListener instanceof InputTextErrorListener) {
                 ((InputTextErrorListener) mInputTextListener).inputText(size);
-                ((InputTextErrorListener) mInputTextListener).inputText(showWords.toString(),
-                        content.toString());
+                ((InputTextErrorListener) mInputTextListener).inputText(showWords.toString(), data);
             } else if (mInputTextListener instanceof InputTextContentListener) {
-                ((InputTextContentListener) mInputTextListener).inputText(showWords.toString(),
-                        content.toString());
+                ((InputTextContentListener) mInputTextListener).inputText(showWords.toString(), data);
             } else if (mInputTextListener instanceof InputTextSizeListener) {
                 ((InputTextSizeListener) mInputTextListener).inputText(size);
             }
@@ -142,13 +148,19 @@ public class InputTextFilter implements InputFilter {
      * @param end    字符结束位置
      * @return 需要插入的字符数据
      */
-    private CharSequence splitContent(CharSequence source, int end, Spanned dest, int dstart, int dend) {
-        CharSequence realWords = getRealWords(source, end, dstart, dend);
-        if (!(realWords.length() + dest.length() <= LENGTH)) {
-            // 超过长度截取
-            realWords = realWords.subSequence(0, LENGTH - dest.length());
+    private CharSequence splitContent(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+        // 计算原始长度
+        int length = dest.length();
+        if (length == LENGTH) {
+            return null;
         }
-        return realWords;
+        // 判断原始长度 + 需要插入字符长度 之和是否超过限定长度
+        if (length < LENGTH && length + source.length() > LENGTH) {
+            return source.subSequence(0, LENGTH - length);
+        }
+        // 直接返回需要添加的字符
+        return source;
+
     }
 
     /**
@@ -160,7 +172,6 @@ public class InputTextFilter implements InputFilter {
      */
     private CharSequence getRealWords(CharSequence source, int end, int dstart, int dend) {
         return dstart == 0 ? source : source.subSequence(source.length() - (dend - dstart), source.length());
-//        return end == (dend - dstart) ? source : dstart == 0 ? source :source.subSequence(dend, source.length());
     }
 
     /**

@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".TestActivity" />
+        <activity android:name=".TestKotlinActivity" />
     </application>
 
 </manifest>

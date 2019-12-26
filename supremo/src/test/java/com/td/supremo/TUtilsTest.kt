@@ -15,6 +15,11 @@ import java.util.concurrent.TimeUnit
 class TUtilsTest {
 
     @Test
+    fun loopTest(){
+        TUtils().loopTest()
+    }
+
+    @Test
     fun sum() {
         println(TUtils().sum(3))
     }
