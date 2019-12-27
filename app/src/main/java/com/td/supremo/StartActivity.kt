@@ -8,6 +8,7 @@ import com.td.utils.edittext.InputTextBuilder
 import com.td.utils.edittext.InputTextErrorListener
 import com.td.utils.edittext.InputTextFilter
 import com.td.base.view.BaseActivity
+import com.td.supremo.flutter.FunctionFlutterActivity
 import com.td.supremo.mvp.TestMvpActivity
 
 /**
@@ -49,6 +50,7 @@ class StartActivity : BaseActivity() {
 
     override fun creating() {
         super.creating()
-        mTextView!!.postDelayed({ startActivity(Intent(this@StartActivity, TestMvpActivity::class.java)) }, 100)
+        mTextView!!.postDelayed({ startActivity(Intent(this@StartActivity, FunctionFlutterActivity::class.java)) }, 100)
+//        mTextView!!.postDelayed({ startActivity(Intent(this@StartActivity, TestMvpActivity::class.java)) }, 100)
     }
 }
