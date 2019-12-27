@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion vers.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion vers.minSdkVersion
+        targetSdkVersion vers.targetSdkVersion
+        versionCode vers.versionCode
+        versionName vers.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation depends.kotlin
+    implementation depends.appcompat
+    testImplementation depends.junit
+    androidTestImplementation depends.runner
+    androidTestImplementation depends.espresso_core
+
+    api depends.okhttp
+    api depends.okio
+    api depends.retrofit
+    api depends.retrofit_gson
+    api depends.okhttp_Log
+
+    implementation depends.kotlinx_coroutines
+    implementation depends.gson
+
+    implementation project(':base')
+
+}

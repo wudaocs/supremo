@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion vers.compileSdkVersion
+    defaultConfig {
+        applicationId vers.applicationId
+        minSdkVersion vers.minSdkVersion
+        targetSdkVersion vers.targetSdkVersion
+        versionCode vers.versionCode
+        versionName vers.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ndk{
+                abiFilters "armeabi"
+            }
+        }
+
+        debug {
+            ndk {
+                abiFilters "armeabi", "armeabi-v7a","arm64-v8a", "x86"
+            }
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        main.res.srcDirs = ['src/main/res/general','src/main/res/mvp']
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        // 解决so文件重复冲突问题
+        // pickFirst 'lib/xxx.so'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation depends.kotlin
+    implementation depends.kotlinx_coroutines
+    implementation depends.appcompat
+    implementation depends.constraint_layout
+    testImplementation depends.junit
+    androidTestImplementation depends.runner
+    androidTestImplementation depends.espresso_core
+    implementation project(':base')
+
+    if(isFlutterDebug.toBoolean()){
+        implementation project(':flutter')
+    }else{
+        implementation(name:'flutter-release-1.0', ext:'aar'){
+            transitive = true
+        }
+    }
+}
