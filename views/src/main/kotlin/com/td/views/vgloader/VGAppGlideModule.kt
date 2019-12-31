@@ -9,5 +9,5 @@ import com.bumptech.glide.module.AppGlideModule
  * Phone ：18610413765
  */
 @GlideModule
-class VanGoghAppGlideMoudle : AppGlideModule(){
+class VGAppGlideModule : AppGlideModule(){
 }

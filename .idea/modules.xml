@@ -14,7 +14,6 @@
       <module fileurl="file://$PROJECT_DIR$/network/supremo-network.iml" filepath="$PROJECT_DIR$/network/supremo-network.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/supremo-supremo.iml" filepath="$PROJECT_DIR$/app/supremo-supremo.iml" />
       <module fileurl="file://$PROJECT_DIR$/views/supremo-views.iml" filepath="$PROJECT_DIR$/views/supremo-views.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tdflutter/tdflutter.iml" filepath="$PROJECT_DIR$/tdflutter/tdflutter.iml" />
       <module fileurl="file://$PROJECT_DIR$/views/views.iml" filepath="$PROJECT_DIR$/views/views.iml" />
     </modules>
   </component>

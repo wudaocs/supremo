@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_start.*
 
 /**
  * Description :
@@ -19,11 +18,7 @@ class TestKotlinActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_start)
-        var test = findViewById<TextView>(R.id.tv_activity_start_prompt)
-
-        val toolbar = findViewById<TextView>(R.id.tv_activity_start_prompt)
-
+        setContentView(R.layout.activity_home)
         val bundle = this.intent.extras
         bundle?.get("key").toString()
         bundle?.get("name").toString()
@@ -35,7 +30,6 @@ class TestKotlinActivity : AppCompatActivity() {
     }
 
     private fun start() {
-        tv_activity_start_prompt.text = ""
     }
 
     fun openActivty() {

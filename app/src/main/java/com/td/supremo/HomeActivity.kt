@@ -1,6 +1,7 @@
 package com.td.supremo
 
-import com.td.base.view.BaseActivity
+import com.td.base.KBaseActivity
+import com.td.supremo.flutter.FunctionFlutterActivity
 
 /**
  * Description :
@@ -11,6 +12,18 @@ import com.td.base.view.BaseActivity
  * Person in charge :Wang Yue
  * Leader：Ding Lei
  */
-class HomeActivity : BaseActivity() {
-//    private val
+class HomeActivity : KBaseActivity() {
+
+    override fun getContentViewLayoutID(): Int {
+        return R.layout.activity_home
+    }
+
+    override fun findView() {
+
+    }
+
+    override fun creating() {
+        super.creating()
+        open(FunctionFlutterActivity::class.java)
+    }
 }

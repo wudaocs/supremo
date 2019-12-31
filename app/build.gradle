@@ -56,6 +56,7 @@ dependencies {
     androidTestImplementation depends.runner
     androidTestImplementation depends.espresso_core
     implementation project(':base')
+    implementation project(':views')
 
     if(isFlutterDebug.toBoolean()){
         implementation project(':flutter')

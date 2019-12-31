@@ -1,6 +1,8 @@
 package com.td.supremo.flutter
 
 import android.view.View
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import com.td.base.KBaseActivity
 import io.flutter.facade.Flutter
 
@@ -12,6 +14,26 @@ import io.flutter.facade.Flutter
 class FunctionFlutterActivity : KBaseActivity() {
 
     override fun getContentView(): View? {
-        return Flutter.createView(this, lifecycle, RouterPath.main)
+        return FrameLayout(this)
     }
+
+    override fun creating() {
+        super.creating()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val flutterLayoutParams = FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+        )
+        flutterLayoutParams.leftMargin = 0
+        flutterLayoutParams.topMargin = 0
+        val flutterView = Flutter.createView(this, lifecycle, RouterPath.main)
+        flutterView.enableTransparentBackground()
+        addContentView(flutterView, flutterLayoutParams)
+    }
+
+    override fun isHiddenNavigationBar(): Boolean = false
+
+    override fun isHiddenTitle(): Boolean = true
 }

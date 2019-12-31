@@ -10,10 +10,10 @@ import com.bumptech.glide.load.resource.drawable.DrawableDecoderCompat
  * Created by Wang Yue on 2019-12-30.
  * Phone ：18610413765
  */
-data class PicBuilder(val context: Context, val url: String? = null, val view: ImageView?){
-    var scaleType : PicScaleType? = null
+data class VGBuilder(val context: Context, val url: String? = null, val view: ImageView?){
+    var scaleType : VGScaleType? = null
 
-    var picType : PicType? = null
+    var vgType : VGType? = null
 
     // 占位符 控制
     private var placeholderDrawable : Drawable? = null
@@ -37,27 +37,52 @@ data class PicBuilder(val context: Context, val url: String? = null, val view: I
     }
     fun getError() = error
 
-    var listener : PicListener? = null
+    var listener : VGListener? = null
+
+    // 是否支持加载缓存
+    private var diskCacheStrategyType : DiskCacheStrategyType? = null
+    fun diskCacheStrategyType(diskCacheStrategy : DiskCacheStrategyType){
+        diskCacheStrategyType = diskCacheStrategy
+    }
+    fun getDiskCacheStrategyType() = diskCacheStrategyType
+
+    fun transition(transition : VGTransitionBuilder? = null){
+
+    }
 }
 
-enum class PicScaleType{
+enum class VGScaleType{
     CENTER_CROP,
     CENTER_INSIDE,
     FIT_XY,
     FIT_CENTER,
-    CENTER_OUTSIDE
+    CIRCLE
 }
 
-enum class PicType {
+enum class VGType {
     DRAWABLE,
     BITMAP,
     GIF,
     FILE
 }
 
-interface PicListener {
+enum class VGTransitionOption{
+    GENERIC,
+    DRAWABLE,
+    BITMAP
+}
 
-    fun onLoad()
+enum class DiskCacheStrategyType {
+    ALL,
+    NONE,
+    DATA,
+    RESOURCE,
+    AUTOMATIC
+}
+
+interface VGListener {
+
+    fun onLoadFailed()
 
     fun complete()
 }

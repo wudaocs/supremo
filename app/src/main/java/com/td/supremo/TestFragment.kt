@@ -24,6 +24,5 @@ class TestMcFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tv_activity_start_prompt.text="AAA"
     }
 }

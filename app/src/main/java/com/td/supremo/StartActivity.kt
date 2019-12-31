@@ -1,15 +1,17 @@
 package com.td.supremo
 
-import android.content.Intent
-import android.text.InputFilter
-import android.widget.EditText
-import android.widget.TextView
-import com.td.utils.edittext.InputTextBuilder
-import com.td.utils.edittext.InputTextErrorListener
-import com.td.utils.edittext.InputTextFilter
-import com.td.base.view.BaseActivity
-import com.td.supremo.flutter.FunctionFlutterActivity
-import com.td.supremo.mvp.TestMvpActivity
+import android.os.CountDownTimer
+import android.widget.Button
+import android.widget.ImageView
+import com.bumptech.glide.GenericTransitionOptions
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.td.base.KBaseActivity
+import com.td.views.vgloader.VGBuilder
+import com.td.views.vgloader.VGLoader
+import com.td.views.vgloader.VGScaleType
+import kotlinx.android.synthetic.main.activity_start.*
+
 
 /**
  * Description : 应用启动类
@@ -20,37 +22,56 @@ import com.td.supremo.mvp.TestMvpActivity
  * Person in charge :Wang Yue
  * Leader：Ding Lei
  */
-class StartActivity : BaseActivity() {
+class StartActivity : KBaseActivity() {
 
-    private var mTextView: TextView? = null
-    private var mEditText: EditText? = null
+    private var imageView: ImageView ? = null
+    private var btnJump: Button ? = null
+
+    private val countTimer = object : CountDownTimer(1000, 1000) {
+        override fun onTick(millisUntilFinished: Long) {
+            btnJump?.text = (millisUntilFinished / 1000 + 1).toString()
+        }
+
+        override fun onFinish() {
+            open(HomeActivity::class.java)
+            finish()
+        }
+    }
 
     override fun getContentViewLayoutID(): Int {
         return R.layout.activity_start
     }
 
     override fun findView() {
-        mTextView = findViewById(R.id.tv_activity_start_prompt)
-        mEditText = findViewById(R.id.et_activity_start_prompt)
-        mEditText!!.filters = arrayOf<InputFilter>(InputTextFilter(InputTextBuilder().setFormat("abc")
-                .setInputTextListener(object : InputTextErrorListener {
-                    override fun inputText(size: Int) {
-
-                    }
-
-                    override fun inputText(content: String,inputWords: String) {
-
-                    }
-
-                    override fun inputError() {
-
-                    }
-                }).build()))
+        imageView = iv_activity_start_background
+        btnJump = btn_activity_start_jump
     }
 
     override fun creating() {
         super.creating()
-        mTextView!!.postDelayed({ startActivity(Intent(this@StartActivity, FunctionFlutterActivity::class.java)) }, 100)
-//        mTextView!!.postDelayed({ startActivity(Intent(this@StartActivity, TestMvpActivity::class.java)) }, 100)
+        VGLoader.show(VGBuilder(this,"http://cdn.duitang.com/uploads/item/201410/27/20141027205016_naAYv.thumb.700_0.gif",imageView).apply {
+            placeholder(R.drawable.icon_image_loading)
+            scaleType = VGScaleType.CENTER_CROP
+        })
+        countTimer.start()
+    }
+
+
+
+    fun test(){
+        imageView?.run {
+            Glide.with(this@StartActivity).asGif().transition(DrawableTransitionOptions.withCrossFade()).diskCacheStrategy
+            Glide.with(this@StartActivity).asGif().transition(GenericTransitionOptions.withNoTransition()).diskCacheStrategy
+            Glide.with(this@StartActivity).load("http://dmimg.5054399.com/allimg/pkm/pk/22.jpg").centerCrop().into(this)
+        }
+    }
+
+    override fun isHiddenTitle(): Boolean  = true
+
+    override fun isHiddenNavigationBar(): Boolean = true
+
+    override fun close() {
+        super.close()
+        countTimer.cancel()
     }
 }
