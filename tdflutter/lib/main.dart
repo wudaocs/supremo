@@ -82,7 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<bool> _requestPop() {
-    SystemNavigator.pop();
+    print("返回执行");
+//    SystemNavigator.pop();
     return new Future.value(false);
   }
 
