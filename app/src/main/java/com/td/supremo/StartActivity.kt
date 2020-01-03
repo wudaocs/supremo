@@ -7,6 +7,7 @@ import com.bumptech.glide.GenericTransitionOptions
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.td.base.KBaseActivity
+import com.td.supremo.home.HomeDrawerActivity
 import com.td.views.vgloader.VGBuilder
 import com.td.views.vgloader.VGLoader
 import com.td.views.vgloader.VGScaleType
@@ -27,13 +28,13 @@ class StartActivity : KBaseActivity() {
     private var imageView: ImageView ? = null
     private var btnJump: Button ? = null
 
-    private val countTimer = object : CountDownTimer(1000, 1000) {
+    private val countTimer = object : CountDownTimer(0, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             btnJump?.text = (millisUntilFinished / 1000 + 1).toString()
         }
 
         override fun onFinish() {
-            open(HomeActivity::class.java)
+            open(HomeDrawerActivity::class.java)
             finish()
         }
     }
@@ -45,6 +46,11 @@ class StartActivity : KBaseActivity() {
     override fun findView() {
         imageView = iv_activity_start_background
         btnJump = btn_activity_start_jump
+        btnJump?.setOnClickListener {
+            countTimer.cancel()
+            open(HomeDrawerActivity::class.java)
+            finish()
+        }
     }
 
     override fun creating() {

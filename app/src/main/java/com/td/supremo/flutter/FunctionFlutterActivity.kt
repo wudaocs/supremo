@@ -19,10 +19,6 @@ class FunctionFlutterActivity : KBaseActivity() {
 
     override fun creating() {
         super.creating()
-    }
-
-    override fun onResume() {
-        super.onResume()
         val flutterLayoutParams = FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
         )
@@ -30,10 +26,12 @@ class FunctionFlutterActivity : KBaseActivity() {
         flutterLayoutParams.topMargin = 0
         val flutterView = Flutter.createView(this, lifecycle, RouterPath.main)
         flutterView.enableTransparentBackground()
-        addContentView(flutterView, flutterLayoutParams)
+        window.decorView.post{
+            addContentView(flutterView, flutterLayoutParams)
+        }
     }
 
-    override fun isHiddenNavigationBar(): Boolean = false
+    override fun isHiddenNavigationBar(): Boolean = true
 
     override fun isHiddenTitle(): Boolean = true
 }

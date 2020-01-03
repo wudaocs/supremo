@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".AppApplication"
         android:allowBackup="false"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
         android:icon="@mipmap/ic_launcher"
@@ -27,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.td.supremo.HomeActivity"
+            android:name="com.td.supremo.home.HomeDrawerActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.td.supremo.TestActivity"
@@ -41,7 +42,7 @@
         <activity
             android:name=".flutter.FunctionFlutterActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/LaunchTheme"/>
+            />
     </application>
 
 </manifest>

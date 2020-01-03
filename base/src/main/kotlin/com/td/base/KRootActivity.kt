@@ -10,6 +10,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.td.log.L
+import com.td.utils.StatusBarUtil
 
 /**
  * Description :
@@ -22,10 +23,13 @@ abstract class KRootActivity : AppCompatActivity() {
         const val REQUEST_CODE = 1100
     }
 
+    private var mContainerId = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         if (isHiddenNavigationBar()) {
-            hideNavigationBar()
+            StatusBarUtil.setTransparentForWindow(this)
         }
+        setActionBarColorMode(isDarkMode())
         if (isHiddenTitle()) {
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             supportActionBar?.hide()
@@ -110,6 +114,15 @@ abstract class KRootActivity : AppCompatActivity() {
 
     open fun isHiddenTitle() = false
     open fun isHiddenNavigationBar() = false
+    open fun isDarkMode() = false
+
+    open fun setActionBarColorMode(idDark: Boolean){
+        if (idDark) {
+            StatusBarUtil.setDarkMode(this)
+        } else {
+            StatusBarUtil.setLightMode(this)
+        }
+    }
 
     open fun open(cls: Class<out KRootActivity>, block: Intent.() -> Unit = {}) {
         val intent = Intent(this, cls)
@@ -121,6 +134,14 @@ abstract class KRootActivity : AppCompatActivity() {
         val intent = Intent(this, cls)
         intent.block()
         startActivityForResult(intent, requestCode)
+    }
+
+    open fun setContainerId(containerId : Int){
+        mContainerId = containerId
+    }
+
+    open fun replace(fragment: KBaseFragment, containerId: Int = mContainerId) {
+        supportFragmentManager.beginTransaction().replace(containerId, fragment).commit()
     }
 
 }

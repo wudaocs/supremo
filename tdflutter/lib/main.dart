@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'business/user.dart';
+
 //void main() => runApp(MyApp());
 void main() {
   runApp(_widgetForRoute(window.defaultRouteName));
@@ -39,8 +41,8 @@ class MyApp extends StatelessWidget {
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
       routes: {
-        '/main': (context) => FlutterPage(
-              title: 'Flutter 主页',
+        '/main': (context) => SampleAppPage(
+              //title: 'Flutter 主页',
             )
       },
     );
@@ -139,22 +141,39 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class FlutterPage extends StatelessWidget {
-  final String title;
 
-  FlutterPage({Key key, this.title}) : super(key: key);
+
+class SampleAppPage extends StatefulWidget {
+  SampleAppPage({Key key}) : super(key: key);
+
+  @override
+  _SampleAppPageState createState() => _SampleAppPageState();
+}
+
+class _SampleAppPageState extends State<SampleAppPage> {
+  // Default placeholder text
+  String textToShow = "I Like Flutter";
+
+  void _updateText() {
+    setState(() {
+      // update the text
+      textToShow = "Flutter is Awesome!";
+      Navigator.push(
+          context, new MaterialPageRoute(builder: (context) => new FlutterPage()));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-    var screenSize = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: PreferredSize(
-            child: AppBar(
-              // Here we take the value from the MyHomePage object that was created by
-              // the App.build method, and use it to set our appbar title.
-              title: Text(title),
-            ),
-            preferredSize: Size.fromHeight(screenSize.height * 0.07)));
+      body: Center(
+          child: Text(textToShow)
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _updateText,
+        tooltip: 'Update Text',
+        child: Icon(Icons.update),
+      ),
+    );
   }
 }
