@@ -33,8 +33,6 @@ open class KBaseActivity : KRootActivity(), KBaseListener {
                 setLogo(this)
             }
 
-
-
             if (builder.isBack){
                 setDisplayHomeAsUpEnabled(true)
                 setHomeButtonEnabled(true)
