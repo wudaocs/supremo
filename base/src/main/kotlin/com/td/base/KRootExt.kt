@@ -12,19 +12,25 @@ import com.td.utils.StatusBarUtil
  * Created by Wang Yue on 2020-01-06.
  * Phone ：18610413765
  */
-fun KRootActivity?.open(cls: Class<out KRootActivity>, block: Intent.() -> Unit = {}) {
+fun KRootActivity?.open(cls: Class<out KRootActivity>, block: Intent.() -> Unit = {}, finish : Boolean = false) {
     this?.run {
         val intent = Intent(this, cls)
         intent.block()
         startActivity(intent)
+        if (finish){
+            finish()
+        }
     }
 }
 
-fun KRootActivity?.openForResult(cls: Class<out KRootActivity>, block: Intent.() -> Unit = {}, requestCode: Int = KRootActivity.REQUEST_CODE) {
+fun KRootActivity?.openForResult(cls: Class<out KRootActivity>, block: Intent.() -> Unit = {}, requestCode: Int = KRootActivity.REQUEST_CODE, finish : Boolean = false) {
     this?.run {
         val intent = Intent(this, cls)
         intent.block()
         startActivityForResult(intent, requestCode)
+        if (finish){
+            finish()
+        }
     }
 }
 

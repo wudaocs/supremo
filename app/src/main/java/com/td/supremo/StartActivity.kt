@@ -49,8 +49,7 @@ class StartActivity : KBaseActivity() {
         btnJump = btn_activity_start_jump
         btnJump?.setOnClickListener {
             countTimer.cancel()
-            open(HomeDrawerActivity::class.java)
-            finish()
+            open(HomeDrawerActivity::class.java, finish = true)
         }
     }
 
