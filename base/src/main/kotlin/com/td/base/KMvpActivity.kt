@@ -13,7 +13,7 @@ open class KMvpActivity<P> : KBaseActivity() {
     // 全局可使用的p
     var mPresenter: P? = null
 
-    override fun creating() {
+    override fun onCreating() {
         if (this::class.java.genericSuperclass is ParameterizedType &&
                 (this::class.java.genericSuperclass as ParameterizedType).actualTypeArguments.isNotEmpty()
         ) {
@@ -44,7 +44,7 @@ open class KMvpActivity<P> : KBaseActivity() {
                 L.e(content = "使用mvp框架Presenter请继承BasePresenter")
             }
         }
-        super.creating()
+        super.onCreating()
     }
 
     override fun close() {

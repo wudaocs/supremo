@@ -1,9 +1,1 @@
 include ':app', ':base', ':network', ':views'
-
-if(isFlutterDebug.toBoolean()) {
-    setBinding(new Binding([gradle: this]))
-    evaluate(new File(
-            settingsDir,
-            "tdflutter/.android/include_flutter.groovy"
-    ))
-}

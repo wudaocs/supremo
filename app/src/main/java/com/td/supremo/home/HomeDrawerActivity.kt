@@ -7,11 +7,13 @@ import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.td.base.KBaseActivity
 import com.td.base.BarBuilder
+import com.td.base.KBaseActivity
+import com.td.base.actionBar
+import com.td.base.setActionBarColorMode
+import com.td.log.L
 import com.td.supremo.R
-import com.td.supremo.flutter.FunctionFlutterActivity
-import com.td.utils.ScreenUtil
+import com.td.utils.*
 import com.td.views.vgloader.VGBuilder
 import com.td.views.vgloader.VGLoader
 import com.td.views.vgloader.VGScaleType
@@ -41,7 +43,7 @@ class HomeDrawerActivity : KBaseActivity() {
 
     override fun findView() {
         setContainerId(R.id.fl_activity_home_drawer_container)
-//        setBar(supportActionBar, BarBuilder("抽屉首页"))
+//        actionBar(BarBuilder("抽屉首页"))
         mDrawerLayout = dl_activity_home_drawer
         mNavigationView = nv_activity_home_drawer
 
@@ -56,20 +58,24 @@ class HomeDrawerActivity : KBaseActivity() {
             scaleType = VGScaleType.CIRCLE
         })
 
-        tvUserName.text = "小狮子"
-        tvUserDesc.text = "七月份的小狮子"
+        tvUserName.textExt("小狮子")
+        tvUserDesc.textExt("七月份的小狮子")
+        tvUserName.textColor(R.color.colorAccent)
+        tvUserDesc.textColor(R.color.colorPrimary)
 
         ivUserAvatar.setOnClickListener {
             mDrawerLayout.closeDrawers()
-            GlobalScope.launch (Dispatchers.IO){
+            GlobalScope.launch(Dispatchers.IO) {
                 delay(150)
-                withContext(Dispatchers.Main){
-                    open(FunctionFlutterActivity::class.java)
+                withContext(Dispatchers.Main) {
+                    it.onClick {
+                        L.e(content = "点击点击点击")
+                    }
                 }
             }
         }
 
-        mDrawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener{
+        mDrawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerStateChanged(newState: Int) {
 
             }
@@ -89,8 +95,8 @@ class HomeDrawerActivity : KBaseActivity() {
         })
     }
 
-    override fun creating() {
-        super.creating()
+    override fun onCreating() {
+        super.onCreating()
         replace(HomeFragment())
     }
 
@@ -99,7 +105,7 @@ class HomeDrawerActivity : KBaseActivity() {
     override fun isHiddenTitle(): Boolean = true
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
             mDrawerLayout.closeDrawers()
             return true
         }

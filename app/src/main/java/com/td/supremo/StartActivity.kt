@@ -7,6 +7,7 @@ import com.bumptech.glide.GenericTransitionOptions
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.td.base.KBaseActivity
+import com.td.base.open
 import com.td.supremo.home.HomeDrawerActivity
 import com.td.views.vgloader.VGBuilder
 import com.td.views.vgloader.VGLoader
@@ -25,8 +26,8 @@ import kotlinx.android.synthetic.main.activity_start.*
  */
 class StartActivity : KBaseActivity() {
 
-    private var imageView: ImageView ? = null
-    private var btnJump: Button ? = null
+    private var imageView: ImageView? = null
+    private var btnJump: Button? = null
 
     private val countTimer = object : CountDownTimer(0, 1000) {
         override fun onTick(millisUntilFinished: Long) {
@@ -53,9 +54,9 @@ class StartActivity : KBaseActivity() {
         }
     }
 
-    override fun creating() {
-        super.creating()
-        VGLoader.show(VGBuilder(this,"http://cdn.duitang.com/uploads/item/201410/27/20141027205016_naAYv.thumb.700_0.gif",imageView).apply {
+    override fun onCreating() {
+        super.onCreating()
+        VGLoader.show(VGBuilder(this, "http://cdn.duitang.com/uploads/item/201410/27/20141027205016_naAYv.thumb.700_0.gif", imageView).apply {
             placeholder(R.drawable.icon_image_loading)
             scaleType = VGScaleType.CENTER_CROP
         })
@@ -63,8 +64,7 @@ class StartActivity : KBaseActivity() {
     }
 
 
-
-    fun test(){
+    fun test() {
         imageView?.run {
             Glide.with(this@StartActivity).asGif().transition(DrawableTransitionOptions.withCrossFade()).diskCacheStrategy
             Glide.with(this@StartActivity).asGif().transition(GenericTransitionOptions.withNoTransition()).diskCacheStrategy
@@ -72,7 +72,7 @@ class StartActivity : KBaseActivity() {
         }
     }
 
-    override fun isHiddenTitle(): Boolean  = true
+    override fun isHiddenTitle(): Boolean = true
 
     override fun isHiddenNavigationBar(): Boolean = true
 

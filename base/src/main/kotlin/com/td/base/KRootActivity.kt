@@ -1,6 +1,5 @@
 package com.td.base
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -8,7 +7,6 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import com.td.log.L
 import com.td.utils.StatusBarUtil
 
@@ -46,7 +44,7 @@ abstract class KRootActivity : AppCompatActivity() {
                 L.e(content = "请设置页面视图")
             }
         }
-        creating()
+        onCreating()
     }
 
     override fun onResume() {
@@ -73,7 +71,7 @@ abstract class KRootActivity : AppCompatActivity() {
     }
 
     /** 创建页面中 */
-    open fun creating() {}
+    open fun onCreating() {}
 
     /** 刷新页面  */
     protected open fun refresh() {}
@@ -115,26 +113,6 @@ abstract class KRootActivity : AppCompatActivity() {
     open fun isHiddenTitle() = false
     open fun isHiddenNavigationBar() = false
     open fun isDarkMode() = false
-
-    open fun setActionBarColorMode(idDark: Boolean){
-        if (idDark) {
-            StatusBarUtil.setDarkMode(this)
-        } else {
-            StatusBarUtil.setLightMode(this)
-        }
-    }
-
-    open fun open(cls: Class<out KRootActivity>, block: Intent.() -> Unit = {}) {
-        val intent = Intent(this, cls)
-        intent.block()
-        startActivity(intent)
-    }
-
-    open fun openForResult(cls: Class<out KRootActivity>, block: Intent.() -> Unit = {}, requestCode: Int = REQUEST_CODE) {
-        val intent = Intent(this, cls)
-        intent.block()
-        startActivityForResult(intent, requestCode)
-    }
 
     open fun setContainerId(containerId : Int){
         mContainerId = containerId

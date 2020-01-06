@@ -60,12 +60,4 @@ dependencies {
     implementation project(':views')
 
     implementation depends.material
-
-    if(isFlutterDebug.toBoolean()){
-        implementation project(':flutter')
-    }else{
-        implementation(name:'flutter-release-1.0', ext:'aar'){
-            transitive = true
-        }
-    }
 }
