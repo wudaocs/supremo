@@ -22,12 +22,8 @@ import kotlinx.coroutines.*
 
 /**
  * Description :
- * Created by Wang Yue on 2018/9/26.
- * Job number：135033
- * Phone ：18610413765
- * Email：wangyue@syswin.com
- * Person in charge :Wang Yue
- * Leader：Ding Lei
+ * Created by YW on 2020-01-06.
+ * Email：1809267944@qq.com
  */
 class HomeDrawerActivity : KBaseActivity() {
 

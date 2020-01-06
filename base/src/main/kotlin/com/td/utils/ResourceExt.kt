@@ -18,15 +18,17 @@ fun Context?.getColors(resourceId: Int): Int = this?.resources?.getColor(resourc
 
 fun View?.textColor(resourceId: Int) {
     this?.run {
-        when (this) {
-            is TextView -> {
-                setTextColor(this.context.resources.getColor(resourceId))
-            }
-            is Button -> {
-                setTextColor(this.context.resources.getColor(resourceId))
-            }
-            is EditText -> {
-                setTextColor(this.context.resources.getColor(resourceId))
+        resourceId.notZero {
+            when (this) {
+                is TextView -> {
+                    setTextColor(this.context.resources.getColor(resourceId))
+                }
+                is Button -> {
+                    setTextColor(this.context.resources.getColor(resourceId))
+                }
+                is EditText -> {
+                    setTextColor(this.context.resources.getColor(resourceId))
+                }
             }
         }
     }
@@ -38,15 +40,17 @@ fun View?.textExt(resourceId: Int) {
 
 fun View?.textExt(content: String?) {
     this?.run {
-        when (this) {
-            is TextView -> {
-                text = content
-            }
-            is Button -> {
-                text = content
-            }
-            is EditText -> {
-                setText(content)
+        content.notNull {
+            when (this) {
+                is TextView -> {
+                    text = content
+                }
+                is Button -> {
+                    text = content
+                }
+                is EditText -> {
+                    setText(content)
+                }
             }
         }
     }
