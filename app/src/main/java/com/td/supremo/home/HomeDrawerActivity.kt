@@ -7,13 +7,14 @@ import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
-import com.td.base.BarBuilder
 import com.td.base.KBaseActivity
-import com.td.base.actionBar
 import com.td.base.setActionBarColorMode
 import com.td.log.L
 import com.td.supremo.R
-import com.td.utils.*
+import com.td.utils.ScreenUtil
+import com.td.utils.onClick
+import com.td.utils.textColor
+import com.td.utils.textExt
 import com.td.views.vgloader.VGBuilder
 import com.td.views.vgloader.VGLoader
 import com.td.views.vgloader.VGScaleType
@@ -50,27 +51,6 @@ class HomeDrawerActivity : KBaseActivity() {
         mNavigationView.addHeaderView(headerView)
         mNavigationView.layoutParams.width = ScreenUtil.width
 
-        VGLoader.show(VGBuilder(this, "https://images.liqucn.com/img/h1/h994/img201802021024070_info300X300.jpg", ivUserAvatar).apply {
-            scaleType = VGScaleType.CIRCLE
-        })
-
-        tvUserName.textExt("小狮子")
-        tvUserDesc.textExt("七月份的小狮子")
-        tvUserName.textColor(R.color.colorAccent)
-        tvUserDesc.textColor(R.color.colorPrimary)
-
-        ivUserAvatar.setOnClickListener {
-            mDrawerLayout.closeDrawers()
-            GlobalScope.launch(Dispatchers.IO) {
-                delay(150)
-                withContext(Dispatchers.Main) {
-                    it.onClick {
-                        L.e(content = "点击点击点击")
-                    }
-                }
-            }
-        }
-
         mDrawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerStateChanged(newState: Int) {
 
@@ -89,6 +69,29 @@ class HomeDrawerActivity : KBaseActivity() {
             }
 
         })
+    }
+
+    override fun loadFunction() {
+        super.loadFunction()
+        VGLoader.show(VGBuilder(this, "https://images.liqucn.com/img/h1/h994/img201802021024070_info300X300.jpg", ivUserAvatar).apply {
+            scaleType = VGScaleType.CIRCLE
+        })
+        tvUserName.textExt("小狮子")
+        tvUserDesc.textExt("七月份的小狮子")
+        tvUserName.textColor(R.color.colorAccent)
+        tvUserDesc.textColor(R.color.colorPrimary)
+
+        ivUserAvatar.setOnClickListener {
+            mDrawerLayout.closeDrawers()
+            GlobalScope.launch(Dispatchers.IO) {
+                delay(150)
+                withContext(Dispatchers.Main) {
+                    it.onClick {
+                        L.e(content = "点击点击点击")
+                    }
+                }
+            }
+        }
     }
 
     override fun onCreating() {
