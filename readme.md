@@ -7,7 +7,7 @@ supremo class
 [base(基础能力提供包：包含基类、工具类方法)] [network（网络请求封装库）] [views（视图封装库）] 
 ``` 
 
-### 集成flutter
+### 集成flutter（* ~~已删除 在其他项目中使用flutter~~）
 flutter sdk 版本 1.5.4.hotfix-2
 
 两种方式
