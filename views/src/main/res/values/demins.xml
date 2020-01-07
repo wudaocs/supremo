@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="divider">0.3dp</dimen>
     <dimen name="dp_negative_50">-50dp</dimen>
     <dimen name="dp_0">0dp</dimen>
     <dimen name="dp_03">0.3dp</dimen>

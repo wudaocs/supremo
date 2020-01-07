@@ -7,10 +7,7 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 
 /**
  * Description :
@@ -56,13 +53,56 @@ fun <T : View> T?.textExt(content: String?): T? = this?.apply {
     }
 }
 
-fun <T : View> T?.wh(width: Int = ViewGroup.LayoutParams.MATCH_PARENT, height: Int = ViewGroup.LayoutParams.MATCH_PARENT): T? =
+fun <T : View> T?.wh(width: Int = ViewGroup.LayoutParams.MATCH_PARENT, height: Int = ViewGroup.LayoutParams.MATCH_PARENT, cls : Class<out View>? = null): T? =
         this?.apply {
-            layoutParams = ViewGroup.LayoutParams(dp(width).toInt(), dp(height).toInt())
+            if (layoutParams == null) {
+                when (this) {
+                    is LinearLayout -> {
+                        layoutParams = LinearLayout.LayoutParams(dp(width).toInt(), dp(height).toInt())
+                    }
+                    is RelativeLayout -> {
+                        layoutParams = RelativeLayout.LayoutParams(dp(width).toInt(), dp(height).toInt())
+                    }
+                    else -> {
+                        when(this.parent){
+                            is LinearLayout -> {
+                                layoutParams = LinearLayout.LayoutParams(dp(width).toInt(), dp(height).toInt())
+                            }
+                            else -> {
+                                when(cls){
+                                    LinearLayout::class.java -> {
+                                        layoutParams = LinearLayout.LayoutParams(dp(width).toInt(), dp(height).toInt())
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                layoutParams.width = dp(width).toInt()
+                layoutParams.height = dp(height).toInt()
+            }
+        }
+
+fun <T : LinearLayout> T?.wh(width: Int = ViewGroup.LayoutParams.MATCH_PARENT, height: Int = ViewGroup.LayoutParams.MATCH_PARENT, gravityExt: Int): T? =
+        this?.apply {
+            if (layoutParams == null) {
+                layoutParams = LinearLayout.LayoutParams(dp(width).toInt(), dp(height).toInt()).apply {
+                    this.gravity = gravityExt
+                }
+            } else {
+                layoutParams.width = dp(width).toInt()
+                layoutParams.height = dp(height).toInt()
+                (layoutParams as LinearLayout.LayoutParams).gravity = gravityExt
+            }
         }
 
 fun <T : View> T.dp(value: Int): Float {
-    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value.toFloat(), resources.displayMetrics)
+    return if (value == -1) {
+        -1f
+    } else {
+        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value.toFloat(), resources.displayMetrics)
+    }
 }
 
 fun <T : View> T?.bgr(resourceId: Int?): T? = this?.apply {
@@ -80,9 +120,18 @@ fun <T : View> T?.bgc(resourceId: Int): T? = this?.apply {
         is ImageView -> setBackgroundColor(resources.getColor(resourceId))
         is TextView -> setBackgroundColor(resources.getColor(resourceId))
         is Button -> setBackgroundColor(resources.getColor(resourceId))
+        is LinearLayout -> setBackgroundColor(resources.getColor(resourceId))
+        else -> setBackgroundColor(resources.getColor(resourceId))
     }
 }
 
-fun TextView?.gravityExt(gravity: Int): TextView? = this?.apply {
-    this.gravity = gravity
+fun <T : View> T?.gravityExt(gravity: Int): T? = this?.apply {
+    when (this) {
+        is TextView -> this.gravity = gravity
+        is LinearLayout -> {
+            val layoutParams = this.getLayoutParams() as LinearLayout.LayoutParams
+            layoutParams.gravity = gravity
+        }
+    }
+
 }

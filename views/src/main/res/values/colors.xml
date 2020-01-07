@@ -2,6 +2,9 @@
 <resources>
 
     <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
     <color name="tv_list_item">#3F51B5</color>
+
+    <color name="divider">#eaeaea</color>
 
 </resources>

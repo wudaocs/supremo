@@ -10,14 +10,16 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.td.base.KBaseActivity
 import com.td.base.setActionBarColorMode
-import com.td.log.L
-import com.td.supremo.R
-import com.td.utils.ScreenUtil
 import com.td.exts.onClick
 import com.td.exts.textColor
 import com.td.exts.textExt
+import com.td.exts.toast
+import com.td.log.L
+import com.td.supremo.R
+import com.td.utils.ScreenUtil
 import com.td.views.custom.LLEntity
 import com.td.views.custom.ListLinearLayout
+import com.td.views.custom.OnLLItemClickListener
 import com.td.views.vgloader.VGBuilder
 import com.td.views.vgloader.VGLoader
 import com.td.views.vgloader.VGScaleType
@@ -29,13 +31,16 @@ import kotlinx.coroutines.*
  * Created by YW on 2020-01-06.
  * Email：1809267944@qq.com
  */
-class HomeDrawerActivity : KBaseActivity() {
+class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
 
     private lateinit var mDrawerLayout: DrawerLayout
     private lateinit var mNavigationView: NavigationView
     private lateinit var ivUserAvatar: ImageView
     private lateinit var tvUserName: TextView
     private lateinit var tvUserDesc: TextView
+
+    private val menuMenu = "菜单"
+    private val menuScan = "扫一扫"
 
     override fun getContentViewLayoutID(): Int {
         return R.layout.activity_home_drawer
@@ -76,13 +81,15 @@ class HomeDrawerActivity : KBaseActivity() {
         tvUserName = headerView.findViewById(R.id.tv_view_home_drawer_username)
         tvUserDesc = headerView.findViewById(R.id.tv_view_home_drawer_user_desc)
         val ll: LinearLayout = headerView.findViewById(R.id.ll_view_home_drawer_menu)
-        ll.addView(ListLinearLayout(this, mutableListOf(LLEntity("菜单"), LLEntity("扫一扫"))))
+        ll.addView(ListLinearLayout(this, mutableListOf(LLEntity(menuMenu, R.drawable.icon_blue_cloud, this),
+                LLEntity(menuScan, R.drawable.icon_blue_fly, this))))
 
         val view = headerView.findViewById<View>(R.id.item_ll_bottom)
 
 
         mNavigationView.addHeaderView(headerView)
-        mNavigationView.layoutParams.width = ScreenUtil.width
+        // 侧边栏宽度
+//        mNavigationView.layoutParams.width = ScreenUtil.width
     }
 
     override fun loadFunction() {
@@ -123,5 +130,16 @@ class HomeDrawerActivity : KBaseActivity() {
             return true
         }
         return super.onKeyDown(keyCode, event)
+    }
+
+    override fun click(name: String) {
+        when (name) {
+            menuMenu -> {
+                toast(menuMenu)
+            }
+            menuScan -> {
+                toast(menuScan)
+            }
+        }
     }
 }

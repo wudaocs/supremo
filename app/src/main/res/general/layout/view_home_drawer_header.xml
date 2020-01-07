@@ -13,8 +13,8 @@
         <ImageView
             android:id="@+id/iv_view_home_drawer_header_avatar"
             style="@style/layout_marginLeft"
-            android:layout_width="@dimen/dp_60"
-            android:layout_height="@dimen/dp_60"
+            android:layout_width="@dimen/dp_65"
+            android:layout_height="@dimen/dp_65"
             android:layout_marginTop="@dimen/dp_45"
             android:contentDescription="@string/image_content_desc_user_header_pic"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -26,10 +26,10 @@
             style="@style/layout_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_16"
             android:maxLines="1"
             android:singleLine="true"
-            android:textSize="@dimen/dp_16"
+            android:textSize="@dimen/dp_18"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_view_home_drawer_header_avatar"
@@ -41,7 +41,8 @@
             style="@style/layout_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_5"
+            android:textSize="@dimen/dp_14"
             android:textStyle="normal"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_view_home_drawer_username"
@@ -51,21 +52,33 @@
         <View
             android:id="@+id/v_view_home_drawer_user_info_line"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
+            android:layout_height="@dimen/divider"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_20"
             android:layout_marginTop="@dimen/dp_10"
-            android:background="@color/colorPrimary"
+            android:background="@color/divider"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_view_home_drawer_user_desc" />
 
         <LinearLayout
             android:id="@+id/ll_view_home_drawer_menu"
-            style="@style/layout_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
             android:orientation="vertical"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/v_view_home_drawer_user_info_line" />
+
+        <View
+            android:id="@+id/v_view_home_drawer_menu_info_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/divider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_view_home_drawer_menu" />
 
         <include
             android:id="@+id/item_ll_bottom"
@@ -75,6 +88,17 @@
             android:layout_marginTop="@dimen/dp_10"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ll_view_home_drawer_menu" />
+
+        <View
+            android:id="@+id/v_view_home_drawer_menu_bottom_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/divider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_ll_bottom" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

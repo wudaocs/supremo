@@ -2,15 +2,17 @@ package com.td.views.custom
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Typeface
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.Gravity
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.td.exts.*
-import com.td.views.vgloader.VGBuilder
-import com.td.views.vgloader.VGLoader
+import com.td.views.R
 
 /**
  * Description :
@@ -28,30 +30,45 @@ class ListLinearLayout(context: Context?, private val list: MutableList<LLEntity
     private fun createList() {
         // 设置方向
         orientation = direction
+        wh(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER_VERTICAL)
         list?.forEach {
-            // 加载元素
-            addView(LinearLayout(context).apply {
+            //            val view = View.inflate(context, R.layout.view_ll_list_item, null)
+//            it.icon.notZero {
+//                view.findViewById<ImageView>(R.id.iv_view_ll_list_item_icon).bgr(it.icon)
+//            }
+//            it.name.notNull {
+//                view.findViewById<ImageView>(R.id.mtv_view_ll_list_item_name).textExt(it.name)
+//            }
+//            // 加载元素
+//            addView(view)
+            addView(LinearLayout(context).also { ll ->
                 // 子元素均为水平方向
-                orientation = HORIZONTAL
+                ll.orientation = HORIZONTAL
+                ll.gravity = Gravity.CENTER_VERTICAL
                 it.icon.notZero {
-                    this.addView(ImageView(context).wh(100, 100).bgr(it.icon))
-                }
-                it.icon.zero {
-                    it.url.notNull {
-                        this.addView(ImageView(context).wh(100, 100).apply {
-                            VGLoader.show(VGBuilder(context, it.url, (this as ImageView)))
-                        })
-                    }
+                    ll.addView(ImageView(context).wh(25, 25, LinearLayout::class.java).bgr(it.icon).apply {
+                        (this?.layoutParams as LayoutParams).setMargins(dp(20).toInt(), 0, 0, 0)
+                    })
                 }
                 it.name.notNull {
-                    this.addView(TextView(context).wh(height = 30).textExt(it.name).gravityExt(Gravity.CENTER))
+                    ll.addView(TextView(context).wh(height = 30, cls = LinearLayout::class.java).textExt(it.name)
+                            .gravityExt(Gravity.CENTER_VERTICAL)?.apply {
+                                setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16f)
+                                typeface = Typeface.DEFAULT_BOLD
+                                (this.layoutParams as LayoutParams).setMargins(dp(20).toInt(), 0, 0, 0)
+                            })
+                    it.llItemClickListener.notNull {
+                        ll.setOnClickListener { _ -> it.llItemClickListener?.click(it.name!!) }
+                    }
                 }
-            }.wh(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))
+            }.wh(LayoutParams.MATCH_PARENT, 50))
         }
     }
 
 }
 
-data class LLEntity(var name: String? = "", var icon: Int? = 0) {
-    var url: String? = null
+data class LLEntity(var name: String? = "", var icon: Int? = 0, var llItemClickListener: OnLLItemClickListener? = null)
+
+interface OnLLItemClickListener {
+    fun click(name: String)
 }

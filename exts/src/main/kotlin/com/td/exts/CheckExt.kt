@@ -26,3 +26,9 @@ fun String?.notNull(block: () -> Unit) {
         block()
     }
 }
+
+fun <T : Any> T?.notNull(block: () -> Unit){
+    if (this != null) {
+        block()
+    }
+}
