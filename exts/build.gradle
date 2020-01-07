@@ -1,45 +1,41 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
-apply plugin: 'kotlin-kapt'
-
 android {
-    compileSdkVersion vers.compileSdkVersion
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
 
     defaultConfig {
-        minSdkVersion vers.minSdkVersion
-        targetSdkVersion vers.targetSdkVersion
-        versionCode vers.versionCode
-        versionName vers.versionName
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
 
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation depends.kotlin
+    implementation depends.kotlinx_coroutines
     implementation depends.appcompat
     testImplementation depends.junit
     androidTestImplementation depends.runner
     androidTestImplementation depends.espresso_core
-
-    implementation depends.lifecycle_runtime
-    api depends.glide
-    kapt depends.glide_compiler
-
-    implementation project(':exts')
 }

@@ -39,4 +39,6 @@ dependencies {
     androidTestImplementation depends.espresso_core
 
     implementation depends.gson
+
+    implementation project(':exts')
 }

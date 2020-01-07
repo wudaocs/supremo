@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION", "unused")
 
-package com.td.utils
+package com.td.exts
 
 import android.content.Context
 import android.view.View

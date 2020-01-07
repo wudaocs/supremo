@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="@dimen/dp_20"
-    android:paddingLeft="@dimen/dp_20"
-    android:paddingTop="@dimen/dp_45"
     tools:ignore="RtlSymmetry">
 
     <ImageView
         android:id="@+id/iv_view_home_drawer_header_avatar"
+        style="@style/layout_marginLeft"
         android:layout_width="@dimen/dp_60"
         android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="@dimen/dp_45"
         android:contentDescription="@string/image_content_desc_user_header_pic"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,6 +19,7 @@
 
     <TextView
         android:id="@+id/tv_view_home_drawer_username"
+        style="@style/layout_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_10"
@@ -34,6 +34,7 @@
 
     <TextView
         android:id="@+id/tv_view_home_drawer_user_desc"
+        style="@style/layout_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/dp_16"
@@ -42,5 +43,23 @@
         app:layout_constraintTop_toBottomOf="@id/tv_view_home_drawer_username"
         tools:ignore="SpUsage"
         tools:text="@string/app_name" />
+
+    <View
+        android:id="@+id/v_view_home_drawer_user_info_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/colorPrimary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_view_home_drawer_user_desc" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        style="@style/layout_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:minHeight="@dimen/dp_100"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_view_home_drawer_user_info_line" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

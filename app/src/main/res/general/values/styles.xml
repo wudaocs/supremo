@@ -14,4 +14,16 @@
         <item name="android:windowBackground">@color/transparent</item>
     </style>
 
+    <style name="layout_marginLeft">
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+        <item name="android:layout_marginLeft">@dimen/dp_20</item>
+    </style>
+
+    <style name="layout_margin">
+        <item name="android:layout_marginStart">@dimen/dp_20</item>
+        <item name="android:layout_marginLeft">@dimen/dp_20</item>
+        <item name="android:layout_marginRight">@dimen/dp_20</item>
+        <item name="android:layout_marginEnd">@dimen/dp_20</item>
+    </style>
+
 </resources>

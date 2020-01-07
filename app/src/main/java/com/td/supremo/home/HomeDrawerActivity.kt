@@ -12,9 +12,9 @@ import com.td.base.setActionBarColorMode
 import com.td.log.L
 import com.td.supremo.R
 import com.td.utils.ScreenUtil
-import com.td.utils.onClick
-import com.td.utils.textColor
-import com.td.utils.textExt
+import com.td.exts.onClick
+import com.td.exts.textColor
+import com.td.exts.textExt
 import com.td.views.vgloader.VGBuilder
 import com.td.views.vgloader.VGLoader
 import com.td.views.vgloader.VGScaleType

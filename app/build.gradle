@@ -58,6 +58,7 @@ dependencies {
     androidTestImplementation depends.espresso_core
     implementation project(':base')
     implementation project(':views')
+    implementation project(':exts')
 
     implementation depends.material
 
