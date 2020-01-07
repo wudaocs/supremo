@@ -20,6 +20,8 @@ import com.td.utils.ScreenUtil
 import com.td.views.custom.LLEntity
 import com.td.views.custom.ListLinearLayout
 import com.td.views.custom.OnLLItemClickListener
+import com.td.views.custom.bottom.BNEntity
+import com.td.views.custom.bottom.BottomNavigationView
 import com.td.views.vgloader.VGBuilder
 import com.td.views.vgloader.VGLoader
 import com.td.views.vgloader.VGScaleType
@@ -38,6 +40,7 @@ class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
     private lateinit var ivUserAvatar: ImageView
     private lateinit var tvUserName: TextView
     private lateinit var tvUserDesc: TextView
+    private lateinit var mBottomNavigationView: BottomNavigationView
 
     private val menuMenu = "菜单"
     private val menuScan = "扫一扫"
@@ -51,6 +54,7 @@ class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
 //        actionBar(BarBuilder("抽屉首页"))
         mDrawerLayout = dl_activity_home_drawer
         mNavigationView = nv_activity_home_drawer
+        mBottomNavigationView = bnv_activity_home_drawer_bottom
         buildNavigation()
         mDrawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerStateChanged(newState: Int) {
@@ -86,7 +90,6 @@ class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
 
         val view = headerView.findViewById<View>(R.id.item_ll_bottom)
 
-
         mNavigationView.addHeaderView(headerView)
         // 侧边栏宽度
 //        mNavigationView.layoutParams.width = ScreenUtil.width
@@ -113,6 +116,12 @@ class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
                 }
             }
         }
+
+        initBottom()
+    }
+
+    private fun initBottom() {
+        mBottomNavigationView.setMenu(mutableListOf(BNEntity(name = "123"), BNEntity(name = "456"), BNEntity(name = "789")))
     }
 
     override fun onCreating() {

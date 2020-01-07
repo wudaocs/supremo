@@ -98,10 +98,16 @@ fun <T : LinearLayout> T?.wh(width: Int = ViewGroup.LayoutParams.MATCH_PARENT, h
         }
 
 fun <T : View> T.dp(value: Int): Float {
-    return if (value == -1) {
-        -1f
-    } else {
-        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value.toFloat(), resources.displayMetrics)
+    return when (value) {
+        -1 -> {
+            -1f
+        }
+        -2 -> {
+            -2f
+        }
+        else -> {
+            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value.toFloat(), resources.displayMetrics)
+        }
     }
 }
 
