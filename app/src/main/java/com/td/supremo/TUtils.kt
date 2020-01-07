@@ -13,11 +13,11 @@ class TUtils {
 
     fun loopTest(){
          for (i in 1..3){
-            println("i" + i)
+            println("i $i")
              abc@for (j in 1..3){
-                println("j" + j)
+                println("j $j")
                 for (k in 1..3) {
-                    println("k" + k)
+                    println("k $k")
                     if (k == 2) break@abc
                 }
             }
