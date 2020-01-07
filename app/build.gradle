@@ -60,4 +60,6 @@ dependencies {
     implementation project(':views')
 
     implementation depends.material
+
+    debugImplementation depends.leakcanary
 }
