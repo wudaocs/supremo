@@ -12,6 +12,7 @@ android {
         targetSdkVersion vers.targetSdkVersion
         versionCode vers.versionCode
         versionName vers.versionName
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -56,12 +57,7 @@ dependencies {
     androidTestImplementation depends.runner
     androidTestImplementation depends.espresso_core
     implementation project(':base')
+    implementation project(':views')
 
-    if(isFlutterDebug.toBoolean()){
-        implementation project(':flutter')
-    }else{
-        implementation(name:'flutter-release-1.0', ext:'aar'){
-            transitive = true
-        }
-    }
+    implementation depends.material
 }

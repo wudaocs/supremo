@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion vers.compileSdkVersion
 
@@ -34,4 +36,8 @@ dependencies {
     testImplementation depends.junit
     androidTestImplementation depends.runner
     androidTestImplementation depends.espresso_core
+
+    implementation depends.lifecycle_runtime
+    api depends.glide
+    kapt depends.glide_compiler
 }

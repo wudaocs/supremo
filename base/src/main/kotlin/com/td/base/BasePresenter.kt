@@ -47,9 +47,15 @@ abstract class BasePresenter<V> : CoroutineScope by CoroutineScope(SupervisorJob
         }
     }
 
-    fun ct1(block : suspend CoroutineScope.()-> Unit){
+    /**
+     * 延迟处理
+     */
+    fun postDelay(time : Long = 0, block : suspend ()-> Unit){
         launch (Dispatchers.IO){
-            block()
+            delay(time)
+            withContext(Dispatchers.Main){
+                block()
+            }
         }
     }
 
