@@ -35,8 +35,7 @@ class StartActivity : KBaseActivity() {
         }
 
         override fun onFinish() {
-            open(HomeDrawerActivity::class.java)
-            finish()
+            open(HomeDrawerActivity::class.java, finish = true)
         }
     }
 

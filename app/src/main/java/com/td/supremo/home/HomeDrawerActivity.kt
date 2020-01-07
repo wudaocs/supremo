@@ -3,6 +3,7 @@ package com.td.supremo.home
 import android.view.KeyEvent
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -15,6 +16,8 @@ import com.td.utils.ScreenUtil
 import com.td.exts.onClick
 import com.td.exts.textColor
 import com.td.exts.textExt
+import com.td.views.custom.LLEntity
+import com.td.views.custom.ListLinearLayout
 import com.td.views.vgloader.VGBuilder
 import com.td.views.vgloader.VGLoader
 import com.td.views.vgloader.VGScaleType
@@ -43,14 +46,7 @@ class HomeDrawerActivity : KBaseActivity() {
 //        actionBar(BarBuilder("抽屉首页"))
         mDrawerLayout = dl_activity_home_drawer
         mNavigationView = nv_activity_home_drawer
-
-        val headerView = View.inflate(this, R.layout.view_home_drawer_header, null)
-        ivUserAvatar = headerView.findViewById(R.id.iv_view_home_drawer_header_avatar)
-        tvUserName = headerView.findViewById(R.id.tv_view_home_drawer_username)
-        tvUserDesc = headerView.findViewById(R.id.tv_view_home_drawer_user_desc)
-        mNavigationView.addHeaderView(headerView)
-        mNavigationView.layoutParams.width = ScreenUtil.width
-
+        buildNavigation()
         mDrawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerStateChanged(newState: Int) {
 
@@ -69,6 +65,24 @@ class HomeDrawerActivity : KBaseActivity() {
             }
 
         })
+    }
+
+    /**
+     * 侧边
+     */
+    private fun buildNavigation() {
+        val headerView = View.inflate(this, R.layout.view_home_drawer_header, null)
+        ivUserAvatar = headerView.findViewById(R.id.iv_view_home_drawer_header_avatar)
+        tvUserName = headerView.findViewById(R.id.tv_view_home_drawer_username)
+        tvUserDesc = headerView.findViewById(R.id.tv_view_home_drawer_user_desc)
+        val ll: LinearLayout = headerView.findViewById(R.id.ll_view_home_drawer_menu)
+        ll.addView(ListLinearLayout(this, mutableListOf(LLEntity("菜单"), LLEntity("扫一扫"))))
+
+        val view = headerView.findViewById<View>(R.id.item_ll_bottom)
+
+
+        mNavigationView.addHeaderView(headerView)
+        mNavigationView.layoutParams.width = ScreenUtil.width
     }
 
     override fun loadFunction() {

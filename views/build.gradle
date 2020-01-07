@@ -33,10 +33,13 @@ dependencies {
 
     implementation depends.kotlin
     implementation depends.appcompat
+    implementation depends.core_ktx
     testImplementation depends.junit
     androidTestImplementation depends.runner
     androidTestImplementation depends.espresso_core
 
+    implementation depends.constraint_layout
+    implementation depends.material
     implementation depends.lifecycle_runtime
     api depends.glide
     kapt depends.glide_compiler
