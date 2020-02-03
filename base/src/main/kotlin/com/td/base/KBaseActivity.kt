@@ -1,9 +1,9 @@
 package com.td.base
 
 /**
- * Description : 基础base
- * Created by Wang Yue on 2019-12-26.
- * Phone ：18610413765
+ * Description :
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 open class KBaseActivity : KRootActivity(), KBaseListener {
 

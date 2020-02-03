@@ -2,8 +2,8 @@ package com.td.views.vgloader
 
 /**
  * Description :
- * Created by Wang Yue on 2019-12-30.
- * Phone ：18610413765
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class VGTransitionBuilder {
 

@@ -12,8 +12,8 @@ import com.bumptech.glide.request.target.Target
 
 /**
  * Description : vg 取自 Van Gogh 梵高
- * Created by Wang Yue on 2019-12-30.
- * Phone ：18610413765
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 object VGLoader {
 

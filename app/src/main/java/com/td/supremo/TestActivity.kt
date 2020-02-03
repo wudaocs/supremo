@@ -1,21 +1,13 @@
 package com.td.supremo
 
-import android.text.InputFilter
 import android.widget.EditText
 import android.widget.TextView
-import com.td.utils.edittext.InputTextBuilder
-import com.td.utils.edittext.InputTextErrorListener
-import com.td.utils.edittext.InputTextFilter
 import com.td.base.view.BaseActivity
 
 /**
- * Description :
- * Created by Wang Yue on 2018/9/25.
- * Job number：135033
- * Phone ：18610413765
- * Email：wangyue@syswin.com
- * Person in charge :Wang Yue
- * Leader：Ding Lei
+ * Description : 测试类
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class TestActivity : BaseActivity() {
 

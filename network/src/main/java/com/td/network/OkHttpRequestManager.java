@@ -28,12 +28,8 @@ import okhttp3.ResponseBody;
 
 /**
  * Description :
- * Created by Mc on 2018/7/24.
- * Job number：135033
- * Phone ：18601413765
- * Email：wangyue@syswin.com
- * Person in charge : Mc
- * Leader：Mc
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 public class OkHttpRequestManager implements ISRequestManager {
 

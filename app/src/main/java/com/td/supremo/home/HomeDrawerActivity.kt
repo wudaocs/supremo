@@ -29,9 +29,9 @@ import kotlinx.android.synthetic.main.activity_home_drawer.*
 import kotlinx.coroutines.*
 
 /**
- * Description :
- * Created by YW on 2020-01-06.
- * Email：1809267944@qq.com
+ * Description : 抽屉效果主页
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
 

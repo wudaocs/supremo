@@ -9,8 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Description : 网络请求proxy
- * Created by Wang Yue on 2019-09-24.
- * Phone ：18610413765
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 object RequestManager {
 

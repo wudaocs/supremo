@@ -6,8 +6,8 @@ import javax.net.ssl.X509TrustManager
 
 /**
  * Description :
- * Created by YW on 2019-12-26.
- * Email：1809267944@qq.com
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 internal class TrustAllManager : X509TrustManager {
 

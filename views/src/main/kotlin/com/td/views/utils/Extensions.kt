@@ -1,9 +1,9 @@
 package com.td.views.utils
 
 /**
- * Description :
- * Created by Wang Yue on 2019-12-30.
- * Phone ：18610413765
+ * Description : 
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 fun <T : Any?> T.todo(block: () -> T): T? {
     return this?.run {

@@ -6,9 +6,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 /**
- * Description :
- * Created by Wang Yue on 2019-12-26.
- * Phone ：18610413765
+ * Description : 测试mvp功能presenter
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class TestMvpPresenter : BasePresenter<TestView>() {
 

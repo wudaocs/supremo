@@ -5,9 +5,9 @@ import com.td.supremo.R
 import kotlinx.android.synthetic.main.activity_mvp_main.*
 
 /**
- * Description :
- * Created by Wang Yue on 2019-12-26.
- * Phone ：18610413765
+ * Description : 测试mvp页面
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class TestMvpActivity : KMvpActivity<TestMvpPresenter>(), TestView {
 

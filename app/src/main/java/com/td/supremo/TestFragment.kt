@@ -5,16 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_start.*
 
 /**
- * Description :
- * Created by Wang Yue on 2018/10/18.
- * Job number：135033
- * Phone ：18610413765
- * Email：wangyue@syswin.com
- * Person in charge :Wang Yue
- * Leader：Ding Lei
+ * Description : 测试功能fragment
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class TestMcFragment : Fragment(){
 

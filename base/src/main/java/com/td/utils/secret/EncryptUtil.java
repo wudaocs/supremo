@@ -3,9 +3,9 @@ package com.td.utils.secret;
 import java.security.MessageDigest;
 
 /**
- * 访问接口时获取sign
- * @author aeal
- *
+ * Description : 加密工具类
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 public class EncryptUtil {
 

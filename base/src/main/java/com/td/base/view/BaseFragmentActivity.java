@@ -6,13 +6,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 /**
- * Description :
- * Created by Wang Yue on 2018/9/26.
- * Job number：135033
- * Phone ：18610413765
- * Email：wangyue@syswin.com
- * Person in charge :Wang Yue
- * Leader：Ding Lei
+ * Description : fragment页面基类
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 public class BaseFragmentActivity extends FragmentActivity {
 

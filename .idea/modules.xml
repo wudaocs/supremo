@@ -5,8 +5,14 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
       <module fileurl="file://$PROJECT_DIR$/exts/exts.iml" filepath="$PROJECT_DIR$/exts/exts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/github-supremo.iml" filepath="$PROJECT_DIR$/github-supremo.iml" />
       <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/supremo.iml" filepath="$PROJECT_DIR$/.idea/supremo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/supremo-app.iml" filepath="$PROJECT_DIR$/app/supremo-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/supremo-base.iml" filepath="$PROJECT_DIR$/base/supremo-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exts/supremo-exts.iml" filepath="$PROJECT_DIR$/exts/supremo-exts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/network/supremo-network.iml" filepath="$PROJECT_DIR$/network/supremo-network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/views/supremo-views.iml" filepath="$PROJECT_DIR$/views/supremo-views.iml" />
       <module fileurl="file://$PROJECT_DIR$/views/views.iml" filepath="$PROJECT_DIR$/views/views.iml" />
     </modules>
   </component>

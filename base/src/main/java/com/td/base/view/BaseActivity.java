@@ -2,12 +2,8 @@ package com.td.base.view;
 
 /**
  * Description : 业务调用基类
- * Created by Wang Yue on 2018/9/25.
- * Job number：135033
- * Phone ：18610413765
- * Email：wangyue@syswin.com
- * Person in charge :Wang Yue
- * Leader：Ding Lei
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 public class BaseActivity extends RootActivity {
 

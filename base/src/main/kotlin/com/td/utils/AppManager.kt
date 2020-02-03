@@ -23,9 +23,8 @@ import java.util.*
 
 /**
  * Description : app 应用工具类
- * Created by Wang Yue on 2019-09-25.
- * Phone ：18610413765
- * Email：wangyue@91sph.com
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 @Suppress("unused")
 object AppManager {

@@ -17,12 +17,8 @@ import kotlinx.android.synthetic.main.activity_start.*
 
 /**
  * Description : 应用启动类
- * Created by Wang Yue on ${DATE}.
- * Job number：135033
- * Phone ：18610413765
- * Email：wangyue@syswin.com
- * Person in charge :Wang Yue
- * Leader：Ding Lei
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class StartActivity : KBaseActivity() {
 

@@ -10,9 +10,9 @@ import android.view.ViewGroup
 import android.widget.*
 
 /**
- * Description :
- * Created by Wang Yue on 2020-01-06.
- * Phone ：18610413765
+ * Description : 
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 
 fun Context?.getColors(resourceId: Int): Int = this?.resources?.getColor(resourceId) ?: 0

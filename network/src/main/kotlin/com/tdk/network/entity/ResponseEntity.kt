@@ -4,8 +4,8 @@ import java.io.Serializable
 
 /**
  * Description :
- * Created by Wang Yue on 2019-11-22.
- * Phone ：18610413765
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class ResponseEntity <T> : Serializable {
     var code: Int = 0

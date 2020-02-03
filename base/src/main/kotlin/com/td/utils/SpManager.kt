@@ -7,13 +7,9 @@ import androidx.collection.SimpleArrayMap
 import com.td.utils.gson.JsonUtil
 
 /**
- * Description : SP 工具类
- * 强烈建议不要在sp里面存储特别大的key/value, 有助于减少卡顿/anr
- * 不要高频地使用apply, 尽可能地批量提交;
- * commit直接在主线程操作, 更要注意了，不要使用MODE_MULTI_PROCESS;
- * 不要连续多次edit(), 应该获取一次获取edit(),然后多次执行putxxx(), 减少内存波动;
- * Created by Wang Yue on 2019-09-25.
- * Phone ：18610413765
+ * Description :
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 @Suppress("unused")
 class SpManager(keyName: String = "uspName") {

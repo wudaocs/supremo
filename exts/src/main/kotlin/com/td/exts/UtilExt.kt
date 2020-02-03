@@ -7,8 +7,8 @@ import android.widget.Toast
 
 /**
  * Description :
- * Created by Wang Yue on 2020-01-07.
- * Phone ：18610413765
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 private var toast: Toast? = null
 

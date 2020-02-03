@@ -4,9 +4,9 @@ import androidx.multidex.MultiDexApplication
 import com.td.utils.AppManager
 
 /**
- * Description :
- * Created by Wang Yue on 2020-01-02.
- * Phone ：18610413765
+ * Description : application
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class AppApplication : MultiDexApplication() {
 

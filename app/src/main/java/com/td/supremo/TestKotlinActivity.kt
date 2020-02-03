@@ -6,13 +6,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 /**
- * Description :
- * Created by Wang Yue on 2018/10/17.
- * Job number：135033
- * Phone ：18610413765
- * Email：wangyue@syswin.com
- * Person in charge :Wang Yue
- * Leader：Ding Lei
+ * Description : 测试kotlin功能页面
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class TestKotlinActivity : AppCompatActivity() {
 

@@ -24,8 +24,8 @@ import javax.net.ssl.TrustManager
 
 /**
  * Description : 包含同步、异步网络请求类
- * Created by YW on 2019-12-26.
- * Email：1809267944@qq.com
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class RequestServiceExec {
 

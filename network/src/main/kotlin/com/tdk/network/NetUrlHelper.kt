@@ -1,11 +1,11 @@
 package com.tdk.network
 
-
 /**
- * Description : 网络请求地址路由类，可优化为路由表
- * Created by Wang Yue on 2019-10-14.
- * Phone ：18610413765
+ * Description :  网络请求地址路由类，可优化为路由表
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
+
 class NetUrlHelper {
 
     companion object {

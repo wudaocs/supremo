@@ -3,9 +3,9 @@ package com.tdk.network.entity
 import java.io.Serializable
 
 /**
- * Description :
- * Created by Wang Yue on 2019-10-15.
- * Phone ：18610413765
+ * Description : 
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 open class BaseEntity : Serializable {
     var code: Int = 0

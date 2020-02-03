@@ -2,9 +2,8 @@ package com.tdk.network.entity
 
 /**
  * Description : 网络相应实体类
- * Created by Wang Yue on 2019-10-12.
- * Phone ：18610413765
- * Email：wangyue@91sph.com
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 class Replying<T> {
 

@@ -3,13 +3,9 @@ package com.td.supremo
 import java.io.Serializable
 
 /**
- * Description :
- * Created by Wang Yue on 2018/10/17.
- * Job number：135033
- * Phone ：18610413765
- * Email：wangyue@syswin.com
- * Person in charge :Wang Yue
- * Leader：Ding Lei
+ * Description : 测试功能数据结构
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 data class TestEntity(var name: String = "", var sex: Int = 0) : Serializable {
 

@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 
 /**
  * Description :
- * Created by Wang Yue on 2020-01-02.
- * Phone ：18610413765
+ * Created by YW on 2020/2/3 .
+ * Email : 1809267944@qq.com
  */
 abstract class KBaseFragment : Fragment() {
 
