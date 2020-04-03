@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.*
 
 /**
- * Description : 
+ * Description :
  * Created by YW on 2020/2/3 .
  * Email : 1809267944@qq.com
  */
@@ -29,6 +29,26 @@ fun <T : View> T?.textColor(resourceId: Int): T? = this?.apply {
             is EditText -> {
                 setTextColor(this.context.resources.getColor(resourceId))
             }
+        }
+    }
+}
+
+fun <T : View> T?.showTextColor(resSelectId: Int, resDefaultId: Int, isSelect: Boolean = false): T? = this?.apply {
+    var resourceId = resDefaultId
+    resSelectId.notZero {
+        if (isSelect) {
+            resourceId = resSelectId
+        }
+    }
+    when (this) {
+        is TextView -> {
+            setTextColor(this.context.resources.getColor(resourceId))
+        }
+        is Button -> {
+            setTextColor(this.context.resources.getColor(resourceId))
+        }
+        is EditText -> {
+            setTextColor(this.context.resources.getColor(resourceId))
         }
     }
 }
@@ -53,7 +73,7 @@ fun <T : View> T?.textExt(content: String?): T? = this?.apply {
     }
 }
 
-fun <T : View> T?.wh(width: Int = ViewGroup.LayoutParams.MATCH_PARENT, height: Int = ViewGroup.LayoutParams.MATCH_PARENT, cls : Class<out View>? = null): T? =
+fun <T : View> T?.wh(width: Int = ViewGroup.LayoutParams.MATCH_PARENT, height: Int = ViewGroup.LayoutParams.MATCH_PARENT, cls: Class<out View>? = null): T? =
         this?.apply {
             if (layoutParams == null) {
                 when (this) {
@@ -64,12 +84,12 @@ fun <T : View> T?.wh(width: Int = ViewGroup.LayoutParams.MATCH_PARENT, height: I
                         layoutParams = RelativeLayout.LayoutParams(dp(width).toInt(), dp(height).toInt())
                     }
                     else -> {
-                        when(this.parent){
+                        when (this.parent) {
                             is LinearLayout -> {
                                 layoutParams = LinearLayout.LayoutParams(dp(width).toInt(), dp(height).toInt())
                             }
                             else -> {
-                                when(cls){
+                                when (cls) {
                                     LinearLayout::class.java -> {
                                         layoutParams = LinearLayout.LayoutParams(dp(width).toInt(), dp(height).toInt())
                                     }

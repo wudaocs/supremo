@@ -70,19 +70,24 @@ class BottomNavigationView : LinearLayout {
                 ll.addView(TextView(context).wh(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, LinearLayout::class.java)?.also {
                     it.gravity = Gravity.CENTER
                     nameList.add(it)
-                }.textColor(R.color.black).textExt(item.name))
+                }.showTextColor(item.textColorSelect, item.textColor, item.isSelector).textExt(item.name))
             }
+            ll.setOnClickListener { item.block() }
         }.wh(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT))
 
     }
 }
 
-data class BNEntity(var icon: Int? = null, var name: String? = null, var url: String? = null) {
+data class BNEntity(var icon: Int? = null, var name: String? = null, var url: String? = null, var block : () -> Unit = {}) {
     // out of range 是否超过边界
     var oor: Boolean = false
     // 是否设置selector
     var isSelector = false
 
     var scale: Float? = 1f
+
+    var textColor = R.color.text_gray
+
+    var textColorSelect = R.color.black
 
 }

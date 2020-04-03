@@ -27,6 +27,8 @@ import com.td.views.vgloader.VGLoader
 import com.td.views.vgloader.VGScaleType
 import kotlinx.android.synthetic.main.activity_home_drawer.*
 import kotlinx.coroutines.*
+import java.util.concurrent.Executors
+import java.util.concurrent.ThreadPoolExecutor
 
 /**
  * Description : 抽屉效果主页
@@ -121,7 +123,13 @@ class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
     }
 
     private fun initBottom() {
-        mBottomNavigationView.setMenu(mutableListOf(BNEntity(name = "123"), BNEntity(name = "456"), BNEntity(name = "789")))
+        mBottomNavigationView.setMenu(mutableListOf(BNEntity(name = "123", block = { clickItem("123") }).apply {
+            isSelector = true
+        }, BNEntity(name = "456", block = { clickItem("456") }), BNEntity(name = "789", block = { clickItem("789") })))
+    }
+
+    private fun clickItem(name: String) {
+        toast("点击 $name")
     }
 
     override fun onCreating() {
