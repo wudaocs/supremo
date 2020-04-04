@@ -47,6 +47,10 @@ open class KMvpActivity<P> : KBaseActivity() {
         super.onCreating()
     }
 
+    override fun findView() {}
+
+    override fun loadFunction() {}
+
     override fun close() {
         super.close()
         mPresenter?.run {

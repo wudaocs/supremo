@@ -48,6 +48,10 @@ class StartActivity : KBaseActivity() {
         }
     }
 
+    override fun loadFunction() {
+
+    }
+
     override fun onCreating() {
         super.onCreating()
         VGLoader.show(VGBuilder(this, "http://cdn.duitang.com/uploads/item/201410/27/20141027205016_naAYv.thumb.700_0.gif", imageView).apply {

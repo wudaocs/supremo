@@ -98,7 +98,6 @@ class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
     }
 
     override fun loadFunction() {
-        super.loadFunction()
         VGLoader.show(VGBuilder(this, "https://images.liqucn.com/img/h1/h994/img201802021024070_info300X300.jpg", ivUserAvatar).apply {
             scaleType = VGScaleType.CIRCLE
         })

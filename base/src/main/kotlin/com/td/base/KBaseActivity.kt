@@ -5,7 +5,7 @@ package com.td.base
  * Created by YW on 2020/2/3 .
  * Email : 1809267944@qq.com
  */
-open class KBaseActivity : KRootActivity(), KBaseListener {
+abstract class KBaseActivity : KRootActivity() {
 
     override fun onCreating() {
         super.onCreating()
@@ -13,10 +13,11 @@ open class KBaseActivity : KRootActivity(), KBaseListener {
         loadFunction()
     }
 
-    override fun findView() {}
+    /** 获取视图 */
+    abstract fun findView()
 
-    override fun loadFunction() {}
-
+    /** 加载业务功能 */
+    abstract fun loadFunction()
 
 
 }
