@@ -1,1 +1,3 @@
 include ':app', ':base', ':network', ':views', ':exts'
+include ':pluginfun'
+include ':pluginone'

@@ -1,5 +1,6 @@
 package com.td.supremo.home
 
+import android.os.Environment
 import android.view.KeyEvent
 import android.view.View
 import android.widget.ImageView
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.mc.pluginfun.byInterfaces.PluginIManager
 import com.td.base.KBaseActivity
 import com.td.base.setActionBarColorMode
 import com.td.exts.onClick
@@ -16,7 +18,6 @@ import com.td.exts.textExt
 import com.td.exts.toast
 import com.td.log.L
 import com.td.supremo.R
-import com.td.utils.ScreenUtil
 import com.td.views.custom.LLEntity
 import com.td.views.custom.ListLinearLayout
 import com.td.views.custom.OnLLItemClickListener
@@ -27,8 +28,6 @@ import com.td.views.vgloader.VGLoader
 import com.td.views.vgloader.VGScaleType
 import kotlinx.android.synthetic.main.activity_home_drawer.*
 import kotlinx.coroutines.*
-import java.util.concurrent.Executors
-import java.util.concurrent.ThreadPoolExecutor
 
 /**
  * Description : 抽屉效果主页
@@ -108,6 +107,13 @@ class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
 
         ivUserAvatar.setOnClickListener {
             mDrawerLayout.closeDrawers()
+            GlobalScope.launch(Dispatchers.Main) {
+                withContext(Dispatchers.IO) {
+                    showPlugin()
+                }
+                // 打开插件页面
+                PluginIManager.startStandardActivity(this@HomeDrawerActivity, "com.mc.pluginone.PluginTestMainActivity")
+            }
             GlobalScope.launch(Dispatchers.IO) {
                 delay(150)
                 withContext(Dispatchers.Main) {
@@ -121,6 +127,12 @@ class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
         initBottom()
     }
 
+    private suspend fun showPlugin() {
+        // TODO 测试调用插件
+        PluginIManager.loadPlugin(this@HomeDrawerActivity, Environment.getExternalStorageDirectory().absolutePath + "/plugin.apk")
+
+    }
+
     private fun initBottom() {
         mBottomNavigationView.setMenu(mutableListOf(BNEntity(name = "123", block = { clickItem("123") }).apply {
             isSelector = true
@@ -129,6 +141,7 @@ class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
 
     private fun clickItem(name: String) {
         toast("点击 $name")
+
     }
 
     override fun onCreating() {

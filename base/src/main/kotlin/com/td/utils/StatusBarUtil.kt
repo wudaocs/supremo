@@ -103,13 +103,15 @@ object StatusBarUtil {
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    private fun darkMode(window: Window, dark: Boolean) {
-        if (isFlyme4) {
-            setModeForFlyme4(window, dark)
-        } else if (isMIUI6 == true) {
-            setModeForMIUI6(window, dark)
+    private fun darkMode(window: Window?, dark: Boolean) {
+        window?.run {
+            if (isFlyme4) {
+                setModeForFlyme4(window, dark)
+            } else if (isMIUI6 == true) {
+                setModeForMIUI6(window, dark)
+            }
+            darkModeForM(window, dark)
         }
-        darkModeForM(window, dark)
     }
 
     /**

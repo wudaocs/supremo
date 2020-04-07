@@ -3,11 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.td.supremo">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <application
         android:name=".AppApplication"
         android:allowBackup="false"
@@ -29,20 +24,21 @@
         </activity>
         <activity
             android:name="com.td.supremo.home.HomeDrawerActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.td.supremo.TestActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name="com.td.supremo.TestKotlinActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name="com.td.supremo.mvp.TestMvpActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".flutter.FunctionFlutterActivity"
             android:screenOrientation="portrait"
-            />
+            tools:ignore="LockedOrientationActivity" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

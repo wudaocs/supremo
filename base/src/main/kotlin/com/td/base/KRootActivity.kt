@@ -24,24 +24,26 @@ abstract class KRootActivity : AppCompatActivity() {
     private var mContainerId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (isHiddenNavigationBar()) {
-            StatusBarUtil.setTransparentForWindow(this)
-        }
-        setActionBarColorMode(isDarkMode())
-        if (isHiddenTitle()) {
-            requestWindowFeature(Window.FEATURE_NO_TITLE)
-            supportActionBar?.hide()
-        }
-        super.onCreate(savedInstanceState)
-        initIntent()
-        if (getContentViewLayoutID() != 0) {
-            setContentView(getContentViewLayoutID())
-        } else {
-            val view = getContentView()
-            if (view != null) {
-                setContentView(view)
+        if (!isOpenPlugin()) {
+            if (isHiddenNavigationBar()) {
+                StatusBarUtil.setTransparentForWindow(this)
+            }
+            setActionBarColorMode(isDarkMode())
+            if (isHiddenTitle()) {
+                requestWindowFeature(Window.FEATURE_NO_TITLE)
+                supportActionBar?.hide()
+            }
+            super.onCreate(savedInstanceState)
+            initIntent()
+            if (getContentViewLayoutID() != 0) {
+                setContentView(getContentViewLayoutID())
             } else {
-                L.e(content = "请设置页面视图")
+                val view = getContentView()
+                if (view != null) {
+                    setContentView(view)
+                } else {
+                    L.e(content = "请设置页面视图")
+                }
             }
         }
         onCreating()
@@ -114,7 +116,10 @@ abstract class KRootActivity : AppCompatActivity() {
     open fun isHiddenNavigationBar() = false
     open fun isDarkMode() = false
 
-    open fun setContainerId(containerId : Int){
+    // 是否开启插件化
+    open fun isOpenPlugin() = false
+
+    open fun setContainerId(containerId: Int) {
         mContainerId = containerId
     }
 

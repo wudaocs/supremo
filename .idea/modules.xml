@@ -7,6 +7,8 @@
       <module fileurl="file://$PROJECT_DIR$/exts/exts.iml" filepath="$PROJECT_DIR$/exts/exts.iml" />
       <module fileurl="file://$PROJECT_DIR$/github-supremo.iml" filepath="$PROJECT_DIR$/github-supremo.iml" />
       <module fileurl="file://$PROJECT_DIR$/network/network.iml" filepath="$PROJECT_DIR$/network/network.iml" group="supremo/network" />
+      <module fileurl="file://$PROJECT_DIR$/pluginfun/pluginfun.iml" filepath="$PROJECT_DIR$/pluginfun/pluginfun.iml" group="supremo/pluginfun" />
+      <module fileurl="file://$PROJECT_DIR$/pluginone/pluginone.iml" filepath="$PROJECT_DIR$/pluginone/pluginone.iml" group="supremo/pluginone" />
       <module fileurl="file://$PROJECT_DIR$/.idea/supremo.iml" filepath="$PROJECT_DIR$/.idea/supremo.iml" group="supremo" />
       <module fileurl="file://$PROJECT_DIR$/app/supremo-app.iml" filepath="$PROJECT_DIR$/app/supremo-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/base/supremo-base.iml" filepath="$PROJECT_DIR$/base/supremo-base.iml" />
