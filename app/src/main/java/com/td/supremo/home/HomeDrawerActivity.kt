@@ -11,6 +11,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.mc.pluginfun.byInterfaces.PluginIManager
 import com.td.base.KBaseActivity
+import com.td.base.constants.PERMISSION_READ_CONTACTS
+import com.td.base.constants.PERMISSION_READ_STORAGE
+import com.td.base.constants.PERMISSION_WRITE_CONTACTS
 import com.td.base.setActionBarColorMode
 import com.td.exts.onClick
 import com.td.exts.textColor
@@ -125,9 +128,14 @@ class HomeDrawerActivity : KBaseActivity(), OnLLItemClickListener {
         }
 
         initBottom()
+        requestPermissions(PERMISSION_READ_STORAGE, PERMISSION_READ_CONTACTS, PERMISSION_WRITE_CONTACTS)
     }
 
-    private suspend fun showPlugin() {
+    override fun permissionsDenied(denied: MutableList<String>?) {
+        super.permissionsDenied(denied)
+    }
+
+    private fun showPlugin() {
         // TODO 测试调用插件
         PluginIManager.loadPlugin(this@HomeDrawerActivity, Environment.getExternalStorageDirectory().absolutePath + "/plugin.apk")
 
